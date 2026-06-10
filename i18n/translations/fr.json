@@ -1,0 +1,162 @@
+{
+  "common": {
+    "getStarted": "Commencer",
+    "watchDemo": "Voir la Démo",
+    "about": "À Propos",
+    "contact": "Contact",
+    "privacy": "Politique de Confidentialité",
+    "terms": "Conditions d'Utilisation",
+    "backToHome": "← Retour à l'Accueil",
+    "goHome": "Aller à l'Accueil",
+    "aboutUs": "À Propos de Nous"
+  },
+  "navbar": {
+    "howItWorks": "Comment Ça Marche",
+    "demo": "Démo",
+    "getStarted": "Commencer"
+  },
+  "hero": {
+    "title": "tvarx",
+    "subtitle": "l'intelligence du mouvement",
+    "description": "Un plan d'entraînement personnalisé, alimenté par l'IA, conçu pour vos objectifs.",
+    "getMyPlan": "Obtenir Mon Plan",
+    "watchDemo": "Voir la Démo"
+  },
+  "howItWorks": {
+    "title": "Comment Ça Marche",
+    "subtitle": "Trois étapes simples pour transformer votre parcours fitness",
+    "steps": {
+      "assess": {
+        "number": "01",
+        "title": "Évaluer",
+        "description": "Dites-nous vos objectifs, niveau de forme et préférences. Notre IA analyse votre profil unique."
+      },
+      "aiPlan": {
+        "number": "02",
+        "title": "Plan IA",
+        "description": "Recevez un programme d'entraînement personnalisé de 7 jours adapté à votre corps et objectifs."
+      },
+      "train": {
+        "number": "03",
+        "title": "S'Entraîner et S'Améliorer",
+        "description": "Suivez vos progrès, adaptez les entraînements et regardez votre coach IA évoluer avec vous."
+      }
+    }
+  },
+  "features": {
+    "title": "Fonctionnalités Puissantes",
+    "subtitle": "Tout ce dont vous avez besoin pour atteindre vos objectifs fitness",
+    "aiPersonalization": {
+      "title": "Personnalisation IA",
+      "description": "Chaque entraînement est créé de manière unique par des algorithmes IA avancés qui apprennent de vos progrès."
+    },
+    "adaptiveProgress": {
+      "title": "Progrès Adaptatif",
+      "description": "Votre programme évolue en temps réel à mesure que vous devenez plus fort, plus rapide et plus capable."
+    },
+    "safety": {
+      "title": "Sécurité et Récupération",
+      "description": "Le suivi intégré garantit que vous vous entraînez intelligemment, récupérez correctement et évitez les blessures."
+    },
+    "homeOrGym": {
+      "title": "Maison ou Salle de Sport",
+      "description": "Que vous ayez une salle de sport complète ou juste votre poids corporel, nous nous adaptons à votre environnement."
+    }
+  },
+  "testimonials": {
+    "title": "Aimé par les Athlètes",
+    "subtitle": "Rejoignez des milliers qui ont transformé leur parcours fitness",
+    "testimonials": [
+      {
+        "name": "Sarah Chen",
+        "role": "Marathonienne",
+        "quote": "TvarX a transformé mon entraînement. L'IA comprenait mon corps mieux que moi."
+      },
+      {
+        "name": "Marcus Johnson",
+        "role": "Athlète de Force",
+        "quote": "Enfin, un programme qui s'adapte à mesure que je deviens plus fort. Plus de plateaux."
+      },
+      {
+        "name": "Elena Rodriguez",
+        "role": "Instructrice de Yoga",
+        "quote": "L'équilibre entre défi et récupération est parfait. Mes clients l'adorent aussi."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Prêt à Transformer Votre Fitness ?",
+    "description": "Téléchargez TvarX aujourd'hui et laissez l'IA créer le plan d'entraînement parfait pour vous.",
+    "downloadOn": "Télécharger sur",
+    "getItOn": "Obtenir sur",
+    "appStore": "App Store",
+    "googlePlay": "Google Play",
+    "disclaimer": "Important : Consultez votre médecin avant de commencer tout nouveau programme d'exercice."
+  },
+  "footer": {
+    "tagline": "L'intelligence du mouvement. Fitness personnalisé, alimenté par l'IA.",
+    "product": "Produit",
+    "legal": "Légal",
+    "connect": "Se Connecter",
+    "tryDemo": "Essayer la Démo",
+    "copyright": "Tous droits réservés."
+  },
+  "about": {
+    "title": "À Propos de TvarX",
+    "subtitle": "Chaque corps raconte une histoire. Nous utilisons l'intelligence pour écouter, apprendre et autonomiser.",
+    "mission": {
+      "title": "Notre Mission",
+      "paragraph1": "Chez TvarX, nous croyons que le fitness doit être aussi unique que vous. Aucun corps n'est identique, et leurs programmes d'entraînement ne devraient pas l'être non plus. Nous avons exploité la puissance de l'intelligence artificielle pour créer quelque chose de révolutionnaire : un compagnon fitness qui comprend votre corps, s'adapte à vos progrès et évolue avec vos objectifs.",
+      "paragraph2": "Notre mission est de démocratiser le fitness personnalisé. Que vous soyez un débutant faisant vos premiers pas ou un athlète d'élite repoussant les limites, TvarX vous rencontre où vous êtes et vous guide vers où vous voulez être. Nous combinons une IA de pointe avec la science de l'exercice éprouvée pour fournir des plans d'entraînement qui ne sont pas seulement efficaces, mais sûrs, durables et inspirants.",
+      "paragraph3": "Chaque corps raconte une histoire. Nous utilisons l'intelligence pour écouter, apprendre et autonomiser. Ce n'est pas seulement notre slogan—c'est notre promesse."
+    },
+    "technology": {
+      "title": "Notre Technologie",
+      "aiModel": {
+        "title": "Modèle d'Entraînement IA",
+        "description": "Notre algorithme IA propriétaire analyse des milliers de points de données—de votre niveau de forme et objectifs à vos modèles de récupération et préférences. Il apprend continuellement de vos progrès, ajustant les entraînements en temps réel pour optimiser les résultats tout en prévenant les blessures et l'épuisement."
+      },
+      "privacy": {
+        "title": "Confidentialité et Sécurité des Données",
+        "description": "Vos données de santé vous appartiennent. Nous utilisons un chiffrement de bout en bout et ne vendons jamais vos informations. Toutes les données sont collectées avec consentement explicite et peuvent être supprimées à tout moment. Nous sommes conformes au RGPD, à la HIPAA et à d'autres réglementations de confidentialité pour garantir que vos informations restent sûres."
+      },
+      "science": {
+        "title": "Fondation Scientifique",
+        "description": "Chaque recommandation est soutenue par la science de l'exercice et examinée par notre équipe de professionnels de médecine sportive. Nous combinons les recherches les plus récentes avec l'expérience pratique pour garantir que votre entraînement est à la fois efficace et sûr."
+      }
+    },
+    "team": {
+      "title": "Notre Équipe",
+      "subtitle": "Experts passionnés en fitness, IA et bien-être humain"
+    },
+    "roadmap": {
+      "title": "Feuille de Route de Développement",
+      "subtitle": "Où nous avons été et où nous allons"
+    },
+    "careers": {
+      "title": "Rejoignez-Nous",
+      "description": "Nous recherchons toujours des individus passionnés qui partagent notre vision de rendre le fitness personnalisé accessible à tous. Si vous êtes passionné par l'IA, le fitness ou la construction de produits qui changent des vies, nous aimerions vous entendre.",
+      "viewPositions": "Voir les Postes Ouverts"
+    }
+  },
+  "contact": {
+    "title": "Contactez-Nous",
+    "underConstruction": "Cette page est actuellement en construction."
+  },
+  "privacy": {
+    "title": "Politique de Confidentialité",
+    "lastUpdated": "Dernière mise à jour : Novembre 2025",
+    "intro": "Merci d'utiliser TVARX — le compagnon fitness alimenté par l'IA qui crée des programmes d'entraînement personnalisés adaptés à vos objectifs, niveau de forme et préférences."
+  },
+  "terms": {
+    "title": "Conditions d'Utilisation",
+    "underConstruction": "Cette page est actuellement en construction."
+  },
+  "notFound": {
+    "title": "404",
+    "subtitle": "Page Non Trouvée",
+    "description": "La page que vous recherchez n'existe pas ou a été déplacée.",
+    "goHome": "Aller à l'Accueil",
+    "aboutUs": "À Propos de Nous"
+  }
+}

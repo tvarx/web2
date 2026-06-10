@@ -1,0 +1,162 @@
+{
+  "common": {
+    "getStarted": "Get Started",
+    "watchDemo": "Watch Demo",
+    "about": "About",
+    "contact": "Contact",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "backToHome": "← Back to Home",
+    "goHome": "Go Home",
+    "aboutUs": "About Us"
+  },
+  "navbar": {
+    "howItWorks": "How It Works",
+    "demo": "Demo",
+    "getStarted": "Get Started"
+  },
+  "hero": {
+    "title": "tvarx",
+    "subtitle": "the intelligence of movement",
+    "description": "A personalized training plan, powered by AI, designed for your goals.",
+    "getMyPlan": "Get My Plan",
+    "watchDemo": "Watch Demo"
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "subtitle": "Three simple steps to transform your fitness journey",
+    "steps": {
+      "assess": {
+        "number": "01",
+        "title": "Assess",
+        "description": "Tell us your goals, fitness level, and preferences. Our AI analyzes your unique profile."
+      },
+      "aiPlan": {
+        "number": "02",
+        "title": "AI Plan",
+        "description": "Receive a personalized 7-day training program tailored to your body and objectives."
+      },
+      "train": {
+        "number": "03",
+        "title": "Train & Improve",
+        "description": "Track progress, adapt workouts, and watch your AI coach evolve with you."
+      }
+    }
+  },
+  "features": {
+    "title": "Powerful Features",
+    "subtitle": "Everything you need to achieve your fitness goals",
+    "aiPersonalization": {
+      "title": "AI Personalization",
+      "description": "Every workout is uniquely crafted by advanced AI algorithms that learn from your progress."
+    },
+    "adaptiveProgress": {
+      "title": "Adaptive Progress",
+      "description": "Your program evolves in real-time as you get stronger, faster, and more capable."
+    },
+    "safety": {
+      "title": "Safety & Recovery",
+      "description": "Built-in monitoring ensures you train smart, recover properly, and avoid injury."
+    },
+    "homeOrGym": {
+      "title": "Home or Gym",
+      "description": "Whether you have a full gym or just bodyweight, we adapt to your environment."
+    }
+  },
+  "testimonials": {
+    "title": "Loved by Athletes",
+    "subtitle": "Join thousands who've transformed their fitness journey",
+    "testimonials": [
+      {
+        "name": "Sarah Chen",
+        "role": "Marathon Runner",
+        "quote": "TvarX transformed my training. The AI understood my body better than I did."
+      },
+      {
+        "name": "Marcus Johnson",
+        "role": "Strength Athlete",
+        "quote": "Finally, a program that adapts as I get stronger. No more plateaus."
+      },
+      {
+        "name": "Elena Rodriguez",
+        "role": "Yoga Instructor",
+        "quote": "The balance between challenge and recovery is perfect. My clients love it too."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to Transform Your Fitness?",
+    "description": "Download TvarX today and let AI craft the perfect training plan for you.",
+    "downloadOn": "Download on",
+    "getItOn": "Get it on",
+    "appStore": "App Store",
+    "googlePlay": "Google Play",
+    "disclaimer": "Important: Consult your physician before starting any new exercise program."
+  },
+  "footer": {
+    "tagline": "The intelligence of movement. Personalized fitness, powered by AI.",
+    "product": "Product",
+    "legal": "Legal",
+    "connect": "Connect",
+    "tryDemo": "Try Demo",
+    "copyright": "All rights reserved."
+  },
+  "about": {
+    "title": "About TvarX",
+    "subtitle": "Every body tells a story. We use intelligence to listen, learn, and empower.",
+    "mission": {
+      "title": "Our Mission",
+      "paragraph1": "At TvarX, we believe that fitness should be as unique as you are. No two bodies are the same, and neither should be their training programs. We've harnessed the power of artificial intelligence to create something revolutionary: a fitness companion that understands your body, adapts to your progress, and evolves with your goals.",
+      "paragraph2": "Our mission is to democratize personalized fitness. Whether you're a beginner taking your first steps or an elite athlete pushing boundaries, TvarX meets you where you are and guides you to where you want to be. We combine cutting-edge AI with proven exercise science to deliver training plans that are not just effective, but safe, sustainable, and inspiring.",
+      "paragraph3": "Every body tells a story. We use intelligence to listen, learn, and empower. That's not just our tagline—it's our promise."
+    },
+    "technology": {
+      "title": "Our Technology",
+      "aiModel": {
+        "title": "AI Training Model",
+        "description": "Our proprietary AI algorithm analyzes thousands of data points—from your fitness level and goals to your recovery patterns and preferences. It continuously learns from your progress, adjusting workouts in real-time to optimize results while preventing injury and burnout."
+      },
+      "privacy": {
+        "title": "Data Privacy & Security",
+        "description": "Your health data belongs to you. We use end-to-end encryption and never sell your information. All data is collected with explicit consent and can be removed at any time. We're compliant with GDPR, HIPAA, and other privacy regulations to ensure your information stays safe."
+      },
+      "science": {
+        "title": "Scientific Foundation",
+        "description": "Every recommendation is backed by exercise science and reviewed by our team of sports medicine professionals. We combine the latest research with practical experience to ensure your training is both effective and safe."
+      }
+    },
+    "team": {
+      "title": "Our Team",
+      "subtitle": "Passionate experts in fitness, AI, and human wellness"
+    },
+    "roadmap": {
+      "title": "Development Roadmap",
+      "subtitle": "Where we've been and where we're going"
+    },
+    "careers": {
+      "title": "Join Us",
+      "description": "We're always looking for passionate individuals who share our vision of making personalized fitness accessible to everyone. If you're excited about AI, fitness, or building products that change lives, we'd love to hear from you.",
+      "viewPositions": "View Open Positions"
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "underConstruction": "This page is currently under construction."
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: November 2025",
+    "intro": "Thank you for using TVARX — the AI-powered fitness companion that creates personalized workout programs tailored to your goals, fitness level, and preferences."
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "underConstruction": "This page is currently under construction."
+  },
+  "notFound": {
+    "title": "404",
+    "subtitle": "Page Not Found",
+    "description": "The page you're looking for doesn't exist or has been moved.",
+    "goHome": "Go Home",
+    "aboutUs": "About Us"
+  }
+}

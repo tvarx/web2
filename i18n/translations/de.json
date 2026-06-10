@@ -1,0 +1,162 @@
+{
+  "common": {
+    "getStarted": "Loslegen",
+    "watchDemo": "Demo Ansehen",
+    "about": "Über Uns",
+    "contact": "Kontakt",
+    "privacy": "Datenschutzerklärung",
+    "terms": "Nutzungsbedingungen",
+    "backToHome": "← Zurück zur Startseite",
+    "goHome": "Zur Startseite",
+    "aboutUs": "Über Uns"
+  },
+  "navbar": {
+    "howItWorks": "Wie Es Funktioniert",
+    "demo": "Demo",
+    "getStarted": "Loslegen"
+  },
+  "hero": {
+    "title": "tvarx",
+    "subtitle": "die Intelligenz der Bewegung",
+    "description": "Ein personalisierter Trainingsplan, angetrieben von KI, entwickelt für Ihre Ziele.",
+    "getMyPlan": "Meinen Plan Erhalten",
+    "watchDemo": "Demo Ansehen"
+  },
+  "howItWorks": {
+    "title": "Wie Es Funktioniert",
+    "subtitle": "Drei einfache Schritte, um Ihre Fitness-Reise zu transformieren",
+    "steps": {
+      "assess": {
+        "number": "01",
+        "title": "Bewerten",
+        "description": "Teilen Sie uns Ihre Ziele, Fitnesslevel und Präferenzen mit. Unsere KI analysiert Ihr einzigartiges Profil."
+      },
+      "aiPlan": {
+        "number": "02",
+        "title": "KI-Plan",
+        "description": "Erhalten Sie ein personalisiertes 7-Tage-Trainingsprogramm, das auf Ihren Körper und Ihre Ziele zugeschnitten ist."
+      },
+      "train": {
+        "number": "03",
+        "title": "Trainieren und Verbessern",
+        "description": "Verfolgen Sie den Fortschritt, passen Sie Workouts an und sehen Sie, wie Ihr KI-Coach mit Ihnen wächst."
+      }
+    }
+  },
+  "features": {
+    "title": "Leistungsstarke Funktionen",
+    "subtitle": "Alles, was Sie brauchen, um Ihre Fitnessziele zu erreichen",
+    "aiPersonalization": {
+      "title": "KI-Personalisierung",
+      "description": "Jedes Workout wird einzigartig von fortgeschrittenen KI-Algorithmen erstellt, die aus Ihrem Fortschritt lernen."
+    },
+    "adaptiveProgress": {
+      "title": "Adaptiver Fortschritt",
+      "description": "Ihr Programm entwickelt sich in Echtzeit, während Sie stärker, schneller und fähiger werden."
+    },
+    "safety": {
+      "title": "Sicherheit und Erholung",
+      "description": "Integriertes Monitoring stellt sicher, dass Sie intelligent trainieren, sich richtig erholen und Verletzungen vermeiden."
+    },
+    "homeOrGym": {
+      "title": "Zuhause oder Fitnessstudio",
+      "description": "Ob Sie ein vollständiges Fitnessstudio haben oder nur Körpergewicht, wir passen uns Ihrer Umgebung an."
+    }
+  },
+  "testimonials": {
+    "title": "Geliebt von Athleten",
+    "subtitle": "Schließen Sie sich Tausenden an, die ihre Fitness-Reise transformiert haben",
+    "testimonials": [
+      {
+        "name": "Sarah Chen",
+        "role": "Marathonläuferin",
+        "quote": "TvarX hat mein Training transformiert. Die KI verstand meinen Körper besser als ich."
+      },
+      {
+        "name": "Marcus Johnson",
+        "role": "Kraftathlet",
+        "quote": "Endlich ein Programm, das sich anpasst, während ich stärker werde. Keine Plateaus mehr."
+      },
+      {
+        "name": "Elena Rodriguez",
+        "role": "Yoga-Lehrerin",
+        "quote": "Das Gleichgewicht zwischen Herausforderung und Erholung ist perfekt. Meine Kunden lieben es auch."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Bereit, Ihr Fitness zu Transformieren?",
+    "description": "Laden Sie TvarX heute herunter und lassen Sie die KI den perfekten Trainingsplan für Sie erstellen.",
+    "downloadOn": "Herunterladen im",
+    "getItOn": "Erhalten im",
+    "appStore": "App Store",
+    "googlePlay": "Google Play",
+    "disclaimer": "Wichtig: Konsultieren Sie Ihren Arzt, bevor Sie ein neues Trainingsprogramm beginnen."
+  },
+  "footer": {
+    "tagline": "Die Intelligenz der Bewegung. Personalisiertes Fitness, angetrieben von KI.",
+    "product": "Produkt",
+    "legal": "Rechtliches",
+    "connect": "Verbinden",
+    "tryDemo": "Demo Ausprobieren",
+    "copyright": "Alle Rechte vorbehalten."
+  },
+  "about": {
+    "title": "Über TvarX",
+    "subtitle": "Jeder Körper erzählt eine Geschichte. Wir nutzen Intelligenz, um zuzuhören, zu lernen und zu stärken.",
+    "mission": {
+      "title": "Unsere Mission",
+      "paragraph1": "Bei TvarX glauben wir, dass Fitness so einzigartig sein sollte wie Sie. Keine zwei Körper sind gleich, und ihre Trainingsprogramme sollten es auch nicht sein. Wir haben die Kraft der künstlichen Intelligenz genutzt, um etwas Revolutionäres zu schaffen: einen Fitness-Begleiter, der Ihren Körper versteht, sich an Ihren Fortschritt anpasst und mit Ihren Zielen wächst.",
+      "paragraph2": "Unsere Mission ist es, personalisiertes Fitness zu demokratisieren. Ob Sie ein Anfänger sind, der seine ersten Schritte macht, oder ein Spitzenathlet, der Grenzen verschiebt, TvarX trifft Sie dort, wo Sie sind, und führt Sie dorthin, wo Sie sein möchten. Wir kombinieren modernste KI mit bewährter Trainingswissenschaft, um Trainingspläne zu liefern, die nicht nur effektiv, sondern auch sicher, nachhaltig und inspirierend sind.",
+      "paragraph3": "Jeder Körper erzählt eine Geschichte. Wir nutzen Intelligenz, um zuzuhören, zu lernen und zu stärken. Das ist nicht nur unser Slogan—das ist unser Versprechen."
+    },
+    "technology": {
+      "title": "Unsere Technologie",
+      "aiModel": {
+        "title": "KI-Trainingsmodell",
+        "description": "Unser proprietärer KI-Algorithmus analysiert Tausende von Datenpunkten—von Ihrem Fitnesslevel und Zielen bis zu Ihren Erholungsmustern und Präferenzen. Er lernt kontinuierlich aus Ihrem Fortschritt und passt Workouts in Echtzeit an, um Ergebnisse zu optimieren und gleichzeitig Verletzungen und Burnout zu verhindern."
+      },
+      "privacy": {
+        "title": "Datenschutz und Sicherheit",
+        "description": "Ihre Gesundheitsdaten gehören Ihnen. Wir verwenden Ende-zu-Ende-Verschlüsselung und verkaufen niemals Ihre Informationen. Alle Daten werden mit ausdrücklicher Zustimmung gesammelt und können jederzeit entfernt werden. Wir sind konform mit DSGVO, HIPAA und anderen Datenschutzbestimmungen, um sicherzustellen, dass Ihre Informationen sicher bleiben."
+      },
+      "science": {
+        "title": "Wissenschaftliche Grundlage",
+        "description": "Jede Empfehlung wird von Trainingswissenschaft unterstützt und von unserem Team von Sportmedizinern überprüft. Wir kombinieren die neueste Forschung mit praktischer Erfahrung, um sicherzustellen, dass Ihr Training sowohl effektiv als auch sicher ist."
+      }
+    },
+    "team": {
+      "title": "Unser Team",
+      "subtitle": "Leidenschaftliche Experten in Fitness, KI und menschlichem Wohlbefinden"
+    },
+    "roadmap": {
+      "title": "Entwicklungs-Roadmap",
+      "subtitle": "Wo wir waren und wohin wir gehen"
+    },
+    "careers": {
+      "title": "Werden Sie Teil Unseres Teams",
+      "description": "Wir suchen immer nach leidenschaftlichen Menschen, die unsere Vision teilen, personalisiertes Fitness für alle zugänglich zu machen. Wenn Sie sich für KI, Fitness oder den Aufbau von Produkten begeistern, die Leben verändern, würden wir gerne von Ihnen hören.",
+      "viewPositions": "Offene Stellen Ansehen"
+    }
+  },
+  "contact": {
+    "title": "Kontaktieren Sie Uns",
+    "underConstruction": "Diese Seite wird derzeit erstellt."
+  },
+  "privacy": {
+    "title": "Datenschutzerklärung",
+    "lastUpdated": "Zuletzt aktualisiert: November 2025",
+    "intro": "Vielen Dank, dass Sie TVARX verwenden — den KI-gestützten Fitness-Begleiter, der personalisierte Trainingsprogramme erstellt, die auf Ihre Ziele, Ihr Fitnesslevel und Ihre Präferenzen zugeschnitten sind."
+  },
+  "terms": {
+    "title": "Nutzungsbedingungen",
+    "underConstruction": "Diese Seite wird derzeit erstellt."
+  },
+  "notFound": {
+    "title": "404",
+    "subtitle": "Seite Nicht Gefunden",
+    "description": "Die Seite, die Sie suchen, existiert nicht oder wurde verschoben.",
+    "goHome": "Zur Startseite",
+    "aboutUs": "Über Uns"
+  }
+}
