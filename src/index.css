@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Vazirmatn", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", "Vazirmatn", sans-serif;
+  --font-mono: "JetBrains Mono", "Vazirmatn", monospace;
+
+  --color-brand-black: #050505;
+  --color-brand-purple: #7C3AED;
+  --color-brand-violet: #A855F7;
+}
+
+@layer utilities {
+  /* Premium futuristic glows */
+  .purple-glow-orb {
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, rgba(168, 85, 247, 0.05) 50%, rgba(5, 5, 5, 0) 100%);
+  }
+}
+
+/* Custom Scrollbar for modern feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #7C3AED;
+}
