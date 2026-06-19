@@ -73,16 +73,16 @@ export function Navbar() {
           <Link 
             to={`/${currentLang}`} 
             className="flex items-center gap-2.5 group" 
-            aria-label="Tarx Home"
+            aria-label="TvarX Home"
           >
             <motion.div 
               whileHover={{ scale: 1.08, rotate: -5 }}
-              className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#7C3AED] to-[#A855F7] flex items-center justify-center shadow-lg shadow-[#7C3AED]/15"
+              className="flex items-center justify-center"
             >
-              <TarxLogo size={24} className="text-white" />
+              <TarxLogo size={40} />
             </motion.div>
             <span className="text-2xl font-bold tracking-tight bg-gradient-to-r from-white via-zinc-200 to-[#A855F7] bg-clip-text text-transparent font-display">
-              Tarx
+              TvarX
             </span>
           </Link>
         </div>
@@ -138,7 +138,7 @@ export function Navbar() {
           <motion.button 
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => handleScrollToSection("cta")}
+            onClick={() => window.dispatchEvent(new CustomEvent("open-vip-modal"))}
             className="px-6 py-2.5 rounded-full bg-gradient-to-r from-[#7C3AED] to-[#A855F7] text-white text-sm font-medium hover:shadow-lg hover:shadow-[#7C3AED]/30 transition-all cursor-pointer flex items-center gap-2"
           >
             <span>{t.navbar.cta}</span>
@@ -216,7 +216,10 @@ export function Navbar() {
 
               <motion.button
                 whileTap={{ scale: 0.95 }}
-                onClick={() => handleScrollToSection("cta")}
+                onClick={() => {
+                  setIsOpen(false);
+                  window.dispatchEvent(new CustomEvent("open-vip-modal"));
+                }}
                 className="w-full mt-2 py-3 rounded-xl bg-gradient-to-r from-[#7C3AED] to-[#A855F7] text-white font-bold text-center flex items-center justify-center gap-2"
               >
                 <span>{t.navbar.cta}</span>

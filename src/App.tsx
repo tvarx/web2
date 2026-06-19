@@ -1,13 +1,27 @@
-import React from "react";
-import { BrowserRouter, Routes, Route, Navigate, Outlet } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route, Navigate, Outlet, useLocation } from "react-router-dom";
+import { motion } from "motion/react";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { Home } from "./pages/Home";
 import { About } from "./pages/About";
 import { Privacy } from "./pages/Privacy";
 import { Terms } from "./pages/Terms";
+import { VipBetaModal } from "./components/VipBetaModal";
 
 function AppLayout() {
+  const [isVipOpen, setIsVipOpen] = useState(false);
+  const location = useLocation();
+  const currentLang: "fa" | "en" = location.pathname.startsWith("/en") ? "en" : "fa";
+
+  useEffect(() => {
+    const handler = () => setIsVipOpen(true);
+    window.addEventListener("open-vip-modal", handler);
+    return () => {
+      window.removeEventListener("open-vip-modal", handler);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#050505] text-zinc-100 flex flex-col font-sans antialiased relative selection:bg-[#7C3AED] selection:text-white">
       {/* Structural Glowing background accents */}
@@ -22,6 +36,11 @@ function AppLayout() {
       <main className="flex-grow">
         <Outlet />
       </main>
+
+
+
+      {/* Shared Global VIP Beta Access/Downloads Modal */}
+      <VipBetaModal isOpen={isVipOpen} onClose={() => setIsVipOpen(false)} lang={currentLang} />
 
       {/* Shared footer section */}
       <Footer />

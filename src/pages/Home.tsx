@@ -43,10 +43,10 @@ export function Home() {
       
       {/* Landing page components */}
       <Hero />
+      <CTA />
       <FeatureGrid />
       <Showcase />
       <Stats />
-      <CTA />
     </>
   );
 }

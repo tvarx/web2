@@ -3,11 +3,12 @@ import { Link, useLocation } from "react-router-dom";
 import { motion } from "motion/react";
 import { Github, Twitter, Instagram, Mail, Heart } from "lucide-react";
 import { TarxLogo } from "./TarxLogo";
+import logo from "../assets/images/logo.png";
+import myket from "../assets/images/myket.png";
+import badgeNew from "../assets/images/badge-new.png";
 import { 
   translations, 
   TranslationSchema,
-  APP_STORE_URL,
-  GOOGLE_PLAY_URL,
   BAZAAR_URL,
   MYKET_URL 
 } from "../i18n/translations";
@@ -36,10 +37,16 @@ export function Footer() {
           {/* Logo Brand information */}
           <div className="md:col-span-5 space-y-5">
             <Link to={`/${currentLang}`} onClick={handleScrollTop} className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-[#7C3AED] to-[#A855F7] flex items-center justify-center">
-                <TarxLogo size={18} className="text-white" />
+              <div className="flex items-center justify-center">
+                {currentLang === "fa" ? (
+                  <img src={logo} alt="TvarX" className="h-8 object-contain" />
+                ) : (
+                  <TarxLogo size={32} />
+                )}
               </div>
-              <span className="text-xl font-bold tracking-tight text-white font-display">Tarx AI</span>
+              { (
+                <span className="text-xl font-bold tracking-tight text-white font-display">TvarX</span>
+              )}
             </Link>
             
             <p className="text-sm text-zinc-400 leading-relaxed max-w-sm">
@@ -99,23 +106,13 @@ export function Footer() {
             </h4>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-white transition-colors flex items-center gap-2">
-                  <span>Apple App Store</span>
-                </a>
-              </li>
-              <li>
-                <a href={GOOGLE_PLAY_URL} target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-white transition-colors flex items-center gap-2">
-                  <span>Google Play Market</span>
-                </a>
-              </li>
-              <li>
                 <a href={BAZAAR_URL} target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-white transition-colors flex items-center gap-2">
-                  <span>کافه‌ بازار (Cafe Bazaar)</span>
+                  <img src={badgeNew} alt="Cafe Bazaar" className="h-8 object-contain" />
                 </a>
               </li>
               <li>
                 <a href={MYKET_URL} target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-white transition-colors flex items-center gap-2">
-                  <span>مایکت فارسی (Myket App)</span>
+                  <img src={myket} alt="Myket App" className="h-8 object-contain" />
                 </a>
               </li>
             </ul>
@@ -126,7 +123,7 @@ export function Footer() {
         {/* Bottom copyright line */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
           <p className="text-center md:text-right">
-            &copy; {new Date().getFullYear()} Tarx. {t.footer.copyright}
+            &copy; {new Date().getFullYear()} TvarX. {t.footer.copyright}
           </p>
 
           <p className="flex items-center gap-1 text-center md:text-left">

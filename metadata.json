@@ -1,6 +1,6 @@
 {
-  "name": "Tarx - Fitness AI",
-  "description": "پلتفرم تمرینی مجهز به هوش مصنوعی Tarx - برنامه‌های ورزشی اختصاصی، مربی هوشمند و تحلیل دقیق پیشرفت در یک اپلیکیشن موبایل مدرن",
+  "name": "TvarX - Fitness AI",
+  "description": "پلتفرم تمرینی مجهز به هوش مصنوعی TvarX - برنامه‌های ورزشی اختصاصی، مربی هوشمند و تحلیل دقیق پیشرفت در یک اپلیکیشن موبایل مدرن",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

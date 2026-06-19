@@ -142,12 +142,12 @@ export function Showcase() {
           <motion.div 
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "-100px" ,}}
             variants={phoneVariants}
             className={`lg:col-span-6 flex justify-center ${isRtl ? "lg:order-2" : "lg:order-1"} relative`}
           >
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[340px] rounded-full bg-[#7C3AED]/10 blur-[90px] -z-10" />
-            <PhoneMockup type="workout" />
+            <PhoneMockup type="workuser" />
           </motion.div>
 
         </div>

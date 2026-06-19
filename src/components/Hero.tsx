@@ -139,24 +139,24 @@ export function Hero() {
               
               {/* Phone 1: Left Rotated (Workout Video Screen) */}
               <motion.div
-                initial={{ opacity: 0, x: -60, rotate: -15, scale: 0.85 }}
-                animate={{ opacity: 1, x: -70, rotate: -12, scale: 0.88 }}
+                initial={{ opacity: 0, x: -80, rotate: -15, scale: 0.85 }}
+                animate={{ opacity: 1, x: -110, rotate: -12, scale: 0.88 }}
                 transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
                 whileHover={{ scale: 0.94, zIndex: 30, transition: { duration: 0.3 } }}
-                className="absolute z-10 origin-bottom shadow-2xl filter brightness-90 hover:brightness-100 transition-all cursor-pointer left-0"
+                className="absolute z-10 origin-bottom shadow-2xl filter brightness-90 hover:brightness-100 transition-all cursor-pointer"
               >
                 <PhoneMockup type="workout" interactive={false} />
               </motion.div>
 
               {/* Phone 2: Right Rotated (Progress Charts Screen) */}
               <motion.div
-                initial={{ opacity: 0, x: 60, rotate: 15, scale: 0.85 }}
-                animate={{ opacity: 1, x: 70, rotate: 12, scale: 0.88 }}
+                initial={{ opacity: 0, x: 80, rotate: 15, scale: 0.85 }}
+                animate={{ opacity: 1, x: 110, rotate: 12, scale: 0.88 }}
                 transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
                 whileHover={{ scale: 0.94, zIndex: 30, transition: { duration: 0.3 } }}
-                className="absolute z-10 origin-bottom shadow-2xl filter brightness-90 hover:brightness-100 transition-all cursor-pointer right-0"
+                className="absolute z-10 origin-bottom shadow-2xl filter brightness-90 hover:brightness-100 transition-all cursor-pointer"
               >
-                <PhoneMockup type="analytics" interactive={false} />
+                <PhoneMockup type="mapboady" interactive={false} />
               </motion.div>
 
               {/* Phone 3: Center Elevated (Live Log Tracking Screen) */}

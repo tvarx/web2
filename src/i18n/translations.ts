@@ -1,8 +1,5 @@
-// Action URLs requested by the user
-export const APP_STORE_URL = "https://apps.apple.com/app/tarx-fitness-ai";
-export const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=com.tarx.app";
-export const BAZAAR_URL = "https://cafebazaar.ir/app/com.tarx.app";
-export const MYKET_URL = "https://myket.ir/app/com.tarx.app";
+export const BAZAAR_URL = "https://cafebazaar.ir/app/com.tvarx.app";
+export const MYKET_URL = "https://myket.ir/app/com.tvarx.app";
 
 export interface LinkType {
   text: string;
@@ -120,6 +117,16 @@ export interface TranslationSchema {
     featuresList: string[];
     valuesTitle: string;
     values: Array<{ title: string; desc: string }>;
+    namePhilosophy: {
+      title: string;
+      p1: string;
+      p2: string;
+      tvarTitle: string;
+      tvarDesc: string;
+      xTitle: string;
+      xDesc: string;
+      p3: string;
+    };
   };
   privacyPage: {
     title: string;
@@ -150,9 +157,9 @@ export const translations: Record<"fa" | "en", TranslationSchema> = {
     dir: "rtl",
     lang: "fa",
     meta: {
-      title: "Tarx | اپلیکیشن تمرین بدنسازی و مربی هوشمند فیتنس با هوش مصنوعی",
-      description: "با اپلیکیشن فیتنس فارسی Tarx، برنامه تمرینی اختصاصی دریافت کنید. مجهز به مربی هوشمند بدنسازی و ابزار پیشرفته تحلیل پیشرفت ورزشی برای تناسب اندام پایدار.",
-      keywords: "اپلیکیشن تمرین بدنسازی, برنامه تمرینی اختصاصی, مربی هوشمند بدنسازی, تحلیل پیشرفت ورزشی, اپ فیتنس فارسی, ورزش در خانه, هوش مصنوعی ورزشی, Tarx"
+      title: "TvarX | اپلیکیشن تمرین بدنسازی و مربی هوشمند فیتنس با هوش مصنوعی",
+      description: "با اپلیکیشن فیتنس فارسی TvarX، برنامه تمرینی اختصاصی دریافت کنید. مجهز به مربی هوشمند بدنسازی و ابزار پیشرفته تحلیل پیشرفت ورزشی برای تناسب اندام پایدار.",
+      keywords: "اپلیکیشن تمرین بدنسازی, برنامه تمرینی اختصاصی, مربی هوشمند بدنسازی, تحلیل پیشرفت ورزشی, اپ فیتنس فارسی, ورزش در خانه, هوش مصنوعی ورزشی, TvarX"
     },
     navbar: {
       home: "خانه",
@@ -169,7 +176,7 @@ export const translations: Record<"fa" | "en", TranslationSchema> = {
       titleFirst: "برنامه تمرینی اختصاصی،",
       titleAccent: "مربی هوشمند",
       titleLast: "و تحلیل پیشرفت در یک اپ",
-      subtitle: "با اپلیکیشن فیتنس فارسی Tarx تمرین‌هایت را دقیق‌تر انجام بده، پیشرفتت را با نمودارهای علمی بسنج و به کمک مربی هوشمند، بهترین برنامه‌ ورزشی متناسب با تیپ بدنی و اهداف تناسب اندام خود را به دست آور.",
+      subtitle: "با اپلیکیشن فیتنس فارسی TvarX تمرین‌هایت را دقیق‌تر انجام بده، پیشرفتت را با نمودارهای علمی بسنج و به کمک مربی هوشمند، بهترین برنامه‌ ورزشی متناسب با تیپ بدنی و اهداف تناسب اندام خود را به دست آور.",
       trustBullet1: "تحلیل آنی تکنیک انجام حرکت",
       trustBullet2: "نمودار اتوماتیک تناژ وزنه‌ها",
       trustBullet3: "برنامه‌های شخصی‌سازی شده",
@@ -182,7 +189,7 @@ export const translations: Record<"fa" | "en", TranslationSchema> = {
       title: "تمرین هوشمند، پیشرفت واقعی",
       subtitle: "ترکیب مربی برتر فیتنس با الگوریتم‌های پردازش تصویر و داده کاوی ورزشی برای به حداکثر رساندن نتایج عضلانی شما.",
       item1Title: "برنامه تمرینی شخصی‌سازی‌شده",
-      item1Desc: "برنامه ورزشی کاملاً متناسب با تیپ بدنی، سطح انرژی روزانه، رکورد وزنه زدن‌ها، و میزان چربی یا عضله هدف شما توسط هوش مصنوعی اختصاصی Tarx تدوین می‌شود.",
+      item1Desc: "برنامه ورزشی کاملاً متناسب با تیپ بدنی، سطح انرژی روزانه، رکورد وزنه زدن‌ها، و میزان چربی یا عضله هدف شما توسط هوش مصنوعی اختصاصی TvarX تدوین می‌شود.",
       item1Badge: "سازگار هوشمند",
       item2Title: "تحلیل فرم و اجرای حرکت",
       item2Desc: "به کمک تشخیص موقعیت مفاصل در حین فیلمبرداری زنده با گوشی، هوش مصنوعی زوایای تمرین را مانیتور کرده و از آسیب به ستون فقرات و اجرای اشتباه حرکت کاملا پیشگیری می‌کند.",
@@ -197,14 +204,14 @@ export const translations: Record<"fa" | "en", TranslationSchema> = {
     showcase: {
       row1Badge: "پیشرفته‌ترین نمودار قدرت ورزشی",
       row1Title: "پیشرفتت رو با نمودارهای دقیق ببین",
-      row1Desc: "با مربی هوشمند Tarx، دیگر نیازی به نوشتن اطلاعات در دفترچه یادداشت آفلاین نیست. اپلیکیشن به صورت اتوماتیک تناژ وزنه‌های لیفت شده، تکرارها، کالری‌های سوخته شده در هر ثانیه و کل فرکانس تمرینات عضلانی‌تان را در یک چارت ۳ بعدی آنالیز می‌کند.",
+      row1Desc: "با مربی هوشمند TvarX، دیگر نیازی به نوشتن اطلاعات در دفترچه یادداشت آفلاین نیست. اپلیکیشن به صورت اتوماتیک تناژ وزنه‌های لیفت شده، تکرارها، کالری‌های سوخته شده در هر ثانیه و کل فرکانس تمرینات عضلانی‌تان را در یک چارت ۳ بعدی آنالیز می‌کند.",
       row1Bullet1Title: "تحلیل دقیق رشد وزنه‌ها",
       row1Bullet1Desc: "مشاهده روند یک ماهه بار اضافه شونده عضلات.",
       row1Bullet2Title: "پیگیری پیوستگی روزانه",
       row1Bullet2Desc: "دارای هیت‌مپ روزهای فعال ورزشی در تقویم رسمی.",
       row2Badge: "مربیگری گام‌به‌گام و مصور",
       row2Title: "تمرین رو قدم‌به‌قدم انجام بده",
-      row2Desc: "روال تمرینی شلوغ و با استرس انتخاب حرکت را با Tarx فراموش کنید. هر ست تمرینی با همراهی فیلم‌های باکیفیت آموزشی، تایمر دقیق زمان استراحت بین ست‌ها، ضربان قلب شما، و تعداد تکرارهای باقی‌مانده هدایت می‌شود.",
+      row2Desc: "روال تمرینی شلوغ و با استرس انتخاب حرکت را با TvarX فراموش کنید. هر ست تمرینی با همراهی فیلم‌های باکیفیت آموزشی، تایمر دقیق زمان استراحت بین ست‌ها، ضربان قلب شما، و تعداد تکرارهای باقی‌مانده هدایت می‌شود.",
       row2Bullet1Title: "تایمر هوشمند استراحت",
       row2Bullet1Desc: "محاسبه علمی مدت زمان بازسازی نفس و انرژی.",
       row2Bullet2Title: "آموزش تصویری زاویه اجرای حرکت",
@@ -229,31 +236,31 @@ export const translations: Record<"fa" | "en", TranslationSchema> = {
       item4Desc: "انطباق آنی با سطح چربی و قدرت شما"
     },
     cta: {
-      badge: "دسترسی زودهنگام به نسخه VIP بتا",
-      title: "آماده‌ای نسخه قوی‌تر خودت رو بسازی؟",
-      subtitle: "از امروز تمرینت رو هوشمندتر شروع کن. با وارد کردن ایمیلت جزء اولین کاربران ایرانی باش که از قدرت مربی بدنسازی هوش مصنوعی Tarx بهره‌مند می‌شوند.",
-      placeholder: "آدرس ایمیل خود را وارد کنید...",
-      button: "شروع رایگان",
-      sending: "در حال ثبت...",
-      successTitle: "ایمیل شما با موفقیت ثبت شد!",
-      successDesc: "به باشگاه کاربران طلایی Tarx خوش آمدید. کد دعوت اختصاصی و دستورالعمل نصب نسخه آزمایشی بتا به آدرس ایمیل شما ارسال خواهد شد.",
-      successPromoCode: "کد هدیه مخصوص",
-      successPromoVal: "TARX_BETA",
-      successQueue: "رتبه نوبت شما",
-      successQueueVal: "#۱۰۲۴",
-      downloadsTitle: "در دسترس برای پلتفرم‌های پرطرفدار مارکت:",
-      trialBadge: "شامل دوره تست رایگان ۱۴ روزه بدون نیاز به کارت بانکی"
+      badge: "دسترسی فوری به اشتراک طلایی",
+      title: "نسخه قوی‌تر خودت رو بساز",
+      subtitle: "بدون نیاز به ثبت‌نام یا ایمیل، همین حالا اپلیکیشن TvarX را مستقیماً نصب کنید. تمام کاربران جدید از ۷ روز تست رایگان کامل بدون نیاز به کارت بانکی بهره‌مند می‌شوند.",
+      placeholder: "",
+      button: "۷ روز تست رایگان",
+      sending: "",
+      successTitle: "",
+      successDesc: "",
+      successPromoCode: "",
+      successPromoVal: "",
+      successQueue: "",
+      successQueueVal: "",
+      downloadsTitle: "دریافت و نصب مستقیم اپلیکیشن:",
+      trialBadge: "شامل ۷ روز تست رایگان واقعی برای تمامی برنامه‌ها و ابزارهای هوش مصنوعی اختصاصی"
     },
     aboutPage: {
-      title: "درباره Tarx",
-      seoTitle: "درباره ما | مربی هوشمند و دستیار دقیق فیتنس Tarx",
-      seoDesc: "پلتفرم ورزشی هوش مصنوعی Tarx چطور به شما کمک می‌کند برنامه‌های تمرینی کاملاً یونیک بر اساس آناتومی بدن خود دریافت کنید و با تکنولوژی زنده گام بردارید.",
+      title: "درباره TvarX",
+      seoTitle: "درباره ما | مربی هوشمند و دستیار دقیق فیتنس TvarX",
+      seoDesc: "پلتفرم ورزشی هوش مصنوعی TvarX چطور به شما کمک می‌کند برنامه‌های تمرینی کاملاً یونیک بر اساس آناتومی بدن خود دریافت کنید و با تکنولوژی زنده گام بردارید.",
       introTitle: "انقلاب دیجیتال در دنیای فیتنس و بدنسازی",
-      introDesc1: "اپلیکیشن Tarx یک پلتفرم جامع و هوشمند برای ورزشکاران حرفه‌ای و علاقه‌مندان به فیتنس است که به کمک مدل‌های هوش مصنوعی اختصاصی، تجربه مربیگری زنده و دقیق را روی گوشی موبایل فراهم کرده است. ما معتقدیم مسیر بدنسازی برای هر فرد به اندازه ساختار ژنتیکی او منحصر به فرد است.",
-      introDesc2: "با حذف روش‌های سنتی و برنامه‌های کاغذی بدون تغییر، Tarx با پایش تکنیک انجام تمرین، تناژ وزنه‌ها و زمان استراحت، مثل یک مربی با تجربه بین‌المللی در هر لحظه کنار شماست تا از آسیب دیدگی پیشگیری کرده و بازدهی عضلانی را به حداکثر برساند.",
+      introDesc1: "اپلیکیشن TvarX یک پلتفرم جامع و هوشمند برای ورزشکاران حرفه‌ای و علاقه‌مندان به فیتنس است که به کمک مدل‌های هوش مصنوعی اختصاصی، تجربه مربیگری زنده و دقیق را روی گوشی موبایل فراهم کرده است. ما معتقدیم مسیر بدنسازی برای هر فرد به اندازه ساختار ژنتیکی او منحصر به فرد است.",
+      introDesc2: "با حذف روش‌های سنتی و برنامه‌های کاغذی بدون تغییر، TvarX با پایش تکنیک انجام تمرین، تناژ وزنه‌ها و زمان استراحت، مثل یک مربی با تجربه بین‌المللی در هر لحظه کنار شماست تا از آسیب دیدگی پیشگیری کرده و بازدهی عضلانی را به حداکثر برساند.",
       visionTitle: "چشم‌انداز و ماموریت ما",
       visionDesc: "تسهیل و علمی‌سازی تمرین برای تمامی افراد جامعه با هزینه بسیار اقتصادی. ما قصد داریم با فناوری هوش مصنوعی، مربیگری تراز اول جهانی را بدون نیاز به پرداخت هزینه‌های گزاف در دسترس همگان قرار دهیم.",
-      featuresTitle: "ویژگی‌های اصلی پلتفرم مربیگری Tarx",
+      featuresTitle: "ویژگی‌های اصلی پلتفرم مربیگری TvarX",
       featuresList: [
         "طراحی برنامه‌های تمرینی بلند مدت با هوش مصنوعی و بهینه‌سازی دائم",
         "موتور بینایی عمیق موبایل جهت بررسی آنی زاویه مفاصل و زانوها حین حرکات کلیدی",
@@ -261,17 +268,27 @@ export const translations: Record<"fa" | "en", TranslationSchema> = {
         "بانک حرکتی عظیم با بیش از ۱۲۰ حرکت و آموزش‌های سه بعدی مدرن",
         "بهینه‌سازی عادات خواب، تغذیه و هیدراتاسیون بدن"
       ],
-      valuesTitle: "ارزش‌های کلیدی تیم Tarx",
+      valuesTitle: "ارزش‌های کلیدی تیم TvarX",
       values: [
         { title: "دقت علمی و فیزیولوژیک", desc: "کلیه محاسبات بر مبنای آخرین دستاوردهای آکادمی‌های مطرح بدنسازی جهان انجام می‌شود." },
         { title: "امنیت داده‌های سلامتی", desc: "پرونده‌های ورزشی و اطلاعات فیزیکی شما با پیشرفته‌ترین لایه‌های رمزنگاری ذخیره می‌شود." },
         { title: "طراحی مدرن و رابط عالی", desc: "رابط کاربری چشم‌نواز تاریک و مینیمال برای افزایش تمرکز ذهنی در سالن‌های ورزشی." }
-      ]
+      ],
+      namePhilosophy: {
+        title: "فلسفه و معنای نام توارکس",
+        p1: "اسم «توارکس» از واژهٔ باستانی Tvar گرفته شده؛ واژه‌ای که معنای شتاب گرفتن، حرکت کردن و رسیدن به توانایی را می‌دهد. ما این اسم را انتخاب کردیم چون باور داریم درون هر آدمی توانایی بزرگی هست که فقط با شروع حرکت بیدار می‌شود.",
+        p2: "ایدهٔ توارکس از همینجا شکل گرفت؛ جایی که کمک کند شروع کردن راحت‌تر شود. جایی که اگر تصمیم گرفتی برای بدنت، سلامتی‌ات و حال بهترت کاری بکنی، یک همراه کنارت باشد. با برنامه‌های ورزشی ساده و قابل انجام تا کم‌کم قوی‌تر شوی و به توانایی‌هایی برسی که شاید قبلاً فکر نمی‌کردی درونت هستند.",
+        tvarTitle: "Tvar (توار)",
+        tvarDesc: "به معنای باستانی شتاب، گام برداشتن، حرکت پرقدرت و آشکارسازی توانایی و قدرت‌های نهفته.",
+        xTitle: "X (ایکس)",
+        xDesc: "نماد نگاه مدرن، تلفیق ورزش و عضلات با فناوری عمیق، هوش مصنوعی و بهینه‌سازی دیجیتال.",
+        p3: "توارکس یعنی حرکت را شروع کنی، شتاب بگیری و با کمک تکنولوژی، هر روز یک قدم به نسخهٔ قوی‌ترِ خودت نزدیک‌تر شوی."
+      }
     },
     privacyPage: {
       title: "حریم خصوصی",
-      seoTitle: "سیاست حفظ حریم خصوصی کاربران | Tarx App",
-      seoDesc: "سیاست رسمی Tarx در قبال جمع‌آوری، امنیت، نحوه نگهداری و پردازش داده‌های فیزیکی، تحرکی و ورزشی کاربران در اپلیکیشن موبایل.",
+      seoTitle: "سیاست حفظ حریم خصوصی کاربران | TvarX App",
+      seoDesc: "سیاست رسمی TvarX در قبال جمع‌آوری، امنیت، نحوه نگهداری و پردازش داده‌های فیزیکی، تحرکی و ورزشی کاربران در اپلیکیشن موبایل.",
       lastUpdated: "آخرین به‌روزرسانی: خرداد ۱۴۰۵",
       tocTitle: "فهرست بخش‌های سند",
       sections: [
@@ -298,7 +315,7 @@ export const translations: Record<"fa" | "en", TranslationSchema> = {
           id: "account",
           title: "۳. اطلاعات حساب و مدیریت پروفایل",
           content: [
-            "شما در هر زمان می‌توانید در منوی تنظیمات اپلیکیشن Tarx، پروفایل کاربری خود را ویرایش کنید یا آن را به همراه تمام رکوردهای تمرین برای همیشه حذف نمایید."
+            "شما در هر زمان می‌توانید در منوی تنظیمات اپلیکیشن TvarX، پروفایل کاربری خود را ویرایش کنید یا آن را به همراه تمام رکوردهای تمرین برای همیشه حذف نمایید."
           ]
         },
         {
@@ -327,8 +344,8 @@ export const translations: Record<"fa" | "en", TranslationSchema> = {
     },
     termsPage: {
       title: "شرایط استفاده",
-      seoTitle: "شرایط و قوانین استفاده از خدمات | Tarx App",
-      seoDesc: "توافقنامه رسمی و تبرئه نامه‌های بهداشتی در خصوص استفاده از مربی هوشمند بدنسازی و پلن‌های تمرینی اپلیکیشن فیتنس Tarx.",
+      seoTitle: "شرایط و قوانین استفاده از خدمات | TvarX App",
+      seoDesc: "توافقنامه رسمی و تبرئه نامه‌های بهداشتی در خصوص استفاده از مربی هوشمند بدنسازی و پلن‌های تمرینی اپلیکیشن فیتنس TvarX.",
       lastUpdated: "آخرین به‌روزرسانی: خرداد ۱۴۰۵",
       tocTitle: "فهرست بخش‌های سند",
       sections: [
@@ -336,14 +353,14 @@ export const translations: Record<"fa" | "en", TranslationSchema> = {
           id: "accept",
           title: "۱. پذیرش شرایط",
           content: [
-            "با نصب، راه‌اندازی و استفاده از اپلیکیشن فیتنس Tarx، شما به طور کامل موافقت خود را با مفاد این توافقنامه اعلام می‌کنید. چنانچه با هریک از این مفاد موافق نیستید، حق استفاده از این برنامه را ندارید."
+            "با نصب، راه‌اندازی و استفاده از اپلیکیشن فیتنس TvarX، شما به طور کامل موافقت خود را با مفاد این توافقنامه اعلام می‌کنید. چنانچه با هریک از این مفاد موافق نیستید، حق استفاده از این برنامه را ندارید."
           ]
         },
         {
           id: "disclaimer",
           title: "۲. رفع مسئولیت پزشکی و سلامتی (مهم)",
           content: [
-            "خدمات اپلیکیشن Tarx هرگز نباید به عنوان جایگزین برای توصیه‌های پزشکی، فیزیوتراپی، یا درمان‌های کلینیکی در نظر گرفته شوند.",
+            "خدمات اپلیکیشن TvarX هرگز نباید به عنوان جایگزین برای توصیه‌های پزشکی، فیزیوتراپی، یا درمان‌های کلینیکی در نظر گرفته شوند.",
             "تمرینات بدنسازی و کار با وزنه‌های سنگین ذاتا دارای ریسک آسیب بدنی هستند. شما پیش از شروع هرگونه برنامه ورزشی باید با پزشک معتمد خود مشورت کنید.",
             "ما هیچ‌گونه مسئولیتی در قبال صدمات فیزیکی، کشیدگی عضلات، دیسک کمر، یا هرگونه عیب سلامتی ثانویه ناشی از عدم تمرکز یا استفاده نادرست از پیشنهادات مربی هوشمند بر عهده نمی‌گیریم."
           ]
@@ -361,14 +378,14 @@ export const translations: Record<"fa" | "en", TranslationSchema> = {
           title: "۴. نحوه مجاز استفاده",
           content: [
             "استفاده از اپلیکیشن صرفآً برای مصارف شخصی و غیرتجاری مجاز است.",
-            "هرگونه مهندسی معکوس، استخراج سورس کد، یا داده‌کاوی در بانک حرکتی و تصاویر آموزشی Tarx به لحاظ قانونی ممنوع بوده و مورد پیگرد قرار می‌گیرد."
+            "هرگونه مهندسی معکوس، استخراج سورس کد، یا داده‌کاوی در بانک حرکتی و تصاویر آموزشی TvarX به لحاظ قانونی ممنوع بوده و مورد پیگرد قرار می‌گیرد."
           ]
         },
         {
           id: "limit",
           title: "۵. محدودیت مسئولیت بدنی",
           content: [
-            "اپلیکیشن Tarx خدمات خود را به صورت 'همان‌گونه که هست' ارائه می‌دهد و هیچ تعهد یا گارانتی صد درصدی در قبال حاصل شدن قطعی نتایج مسابقاتی یا ساخت کوپ کوپ عضلات در یک مدت محدود ارائه نمی‌دهد."
+            "اپلیکیشن TvarX خدمات خود را به صورت 'همان‌گونه که هست' ارائه می‌دهد و هیچ تعهد یا گارانتی صد درصدی در قبال حاصل شدن قطعی نتایج مسابقاتی یا ساخت کوپ کوپ عضلات در یک مدت محدود ارائه نمی‌دهد."
           ]
         },
         {
@@ -381,9 +398,9 @@ export const translations: Record<"fa" | "en", TranslationSchema> = {
       ]
     },
     footer: {
-      description: "پلتفرم ورزشی پیشرفته عضلانی Tarx با بهره‌گیری از مدل‌های پردازش تصویر هوشمند و الگوریتم‌های مربی بدنسازی، سبک زندگی و فیتنس شما را به اوج لذت و بهینگی می‌رساند.",
+      description: "پلتفرم ورزشی پیشرفته عضلانی TvarX با بهره‌گیری از مدل‌های پردازش تصویر هوشمند و الگوریتم‌های مربی بدنسازی، سبک زندگی و فیتنس شما را به اوج لذت و بهینگی می‌رساند.",
       storeDownloadTitle: "دریافت مستقیم و راه‌اندازی سریع اپلیکیشن موبایل",
-      copyright: "تمامی حقوق مادی و معنوی اپلیکیشن متعلق به Tarx است.",
+      copyright: "تمامی حقوق مادی و معنوی اپلیکیشن متعلق به TvarX است.",
       craftedWith: "طراحی شده با عشق برای ورزشکاران خلاق دیروز و قهرمانان امروز"
     }
   },
@@ -391,9 +408,9 @@ export const translations: Record<"fa" | "en", TranslationSchema> = {
     dir: "ltr",
     lang: "en",
     meta: {
-      title: "Tarx | AI Fitness Mobile App & Smart Workout Coach",
-      description: "Receive personalized workout plans dynamically adjusted by Tarx AI. Equipped with an AI workout coach, instant posture analysis, and advanced tracking charts.",
-      keywords: "AI fitness app, bodybuilding workout plans, AI personal trainer, performance analytics, Persian fitness app, home workouts, sports artificial intelligence, Tarx"
+      title: "TvarX | AI Fitness Mobile App & Smart Workout Coach",
+      description: "Receive personalized workout plans dynamically adjusted by TvarX AI. Equipped with an AI workout coach, instant posture analysis, and advanced tracking charts.",
+      keywords: "AI fitness app, bodybuilding workout plans, AI personal trainer, performance analytics, Persian fitness app, home workouts, sports artificial intelligence, TvarX"
     },
     navbar: {
       home: "Home",
@@ -410,7 +427,7 @@ export const translations: Record<"fa" | "en", TranslationSchema> = {
       titleFirst: "Customized Workouts,",
       titleAccent: "Smart Coach,",
       titleLast: "and Seamless Analytics in One App",
-      subtitle: "Perform your workouts precisely with Tarx. Track your progress with high-fidelity analytical charts, and get dynamic, tailored fitness programs perfect for your exact body type and goals.",
+      subtitle: "Perform your workouts precisely with TvarX. Track your progress with high-fidelity analytical charts, and get dynamic, tailored fitness programs perfect for your exact body type and goals.",
       trustBullet1: "Instant Form & Posture Analysis",
       trustBullet2: "Automatic Weight Volume Charts",
       trustBullet3: "Personalized Daily Routines",
@@ -423,7 +440,7 @@ export const translations: Record<"fa" | "en", TranslationSchema> = {
       title: "Smart Training, Real Results",
       subtitle: "Combining world-class fitness expertise with on-device computer vision and smart analytics to maximize your muscle adaptation.",
       item1Title: "Personalized Workout Plans",
-      item1Desc: "Fully adapted plans custom-tailored to your body composition, daily energy, historical weight records, and fat/muscle goals by our core Tarx AI engine.",
+      item1Desc: "Fully adapted plans custom-tailored to your body composition, daily energy, historical weight records, and fat/muscle goals by our core TvarX AI engine.",
       item1Badge: "Highly Adaptive",
       item2Title: "Posture & Joint Form Analysis",
       item2Desc: "Using live skeletal joint detection, the app monitors your joint angles during exercises, preventing lower-back injuries and improper posture in real-time.",
@@ -438,7 +455,7 @@ export const translations: Record<"fa" | "en", TranslationSchema> = {
     showcase: {
       row1Badge: "Advanced Strength Analytical Systems",
       row1Title: "Visualize Your Growth with Clear Charts",
-      row1Desc: "Forget about handwriting workout logs. Tarx automatically aggregates lift tonnage, physical volume, muscle frequency, and calories burned into beautiful, high-tech 3D charts.",
+      row1Desc: "Forget about handwriting workout logs. TvarX automatically aggregates lift tonnage, physical volume, muscle frequency, and calories burned into beautiful, high-tech 3D charts.",
       row1Bullet1Title: "Micro Load Increase Tracker",
       row1Bullet1Desc: "Track progressive overload trends on an elegant interactive line chart.",
       row1Bullet2Title: "Daily Streak Heatmap",
@@ -470,31 +487,31 @@ export const translations: Record<"fa" | "en", TranslationSchema> = {
       item4Desc: "Direct adaptation to your force boundaries"
     },
     cta: {
-      badge: "Exclusive VIP Early Beta Access",
-      title: "Ready to Forge Your Absolute Strongest Self?",
-      subtitle: "Begin training smarter starting today. Secure your early beta invitation to start utilizing the full powers of Tarx Personal Coaching AI.",
-      placeholder: "Enter your email address...",
-      button: "Start Free Trial",
-      sending: "Registering...",
-      successTitle: "Your email has been successfully registered!",
-      successDesc: "Welcome to Tarx VIP guild. A custom invite credential and setup details will be delivered to you via email shortly.",
-      successPromoCode: "PROMO CODE",
-      successPromoVal: "TARX_BETA",
-      successQueue: "YOUR QUEUE NO.",
-      successQueueVal: "#1024",
-      downloadsTitle: "Get it on your preferred marketplace:",
-      trialBadge: "Includes unlimited 14-day trial. No credit card required."
+      badge: "Instant Premium Access",
+      title: "Forge Your Strongest Self",
+      subtitle: "No signups or email registrations required. Install the TvarX app directly now. Every new user instantly starts an all-access 7-day free trial with no credit card details required.",
+      placeholder: "",
+      button: "7 Days Free Trial",
+      sending: "",
+      successTitle: "",
+      successDesc: "",
+      successPromoCode: "",
+      successPromoVal: "",
+      successQueue: "",
+      successQueueVal: "",
+      downloadsTitle: "Download & Install Directly:",
+      trialBadge: "Includes 7 days of 100% free unlimited trial. No credit card required."
     },
     aboutPage: {
-      title: "About Tarx",
-      seoTitle: "About Us | Tarx Advanced AI Training Platform",
-      seoDesc: "Discover the technology behind Tarx AI Gym, and how digital skeleton posture analysis is changing modern bodybuilding and health forever.",
+      title: "About TvarX",
+      seoTitle: "About Us | TvarX Advanced AI Training Platform",
+      seoDesc: "Discover the technology behind TvarX AI Gym, and how digital skeleton posture analysis is changing modern bodybuilding and health forever.",
       introTitle: "A Digital Revolution in Fitness & Bodybuilding",
-      introDesc1: "Tarx is a futuristic fitness and health ecosystems designed for both pro bodybuilders and amateur gym-goers. Integrating modern computer-vision structures, we deliver personal coach and live skeletal tracking right onto your pocket screens. We believe everyone's biomechanics are uniquely specialized.",
-      introDesc2: "By phasing out rigid static routines and paper sheets, Tarx guides you with adaptive weight targets, rest, and fatigue level checks. It functions like an elite coach, minimizing injury risks and pushing muscle fibers to peak output.",
+      introDesc1: "TvarX is a futuristic fitness and health ecosystems designed for both pro bodybuilders and amateur gym-goers. Integrating modern computer-vision structures, we deliver personal coach and live skeletal tracking right onto your pocket screens. We believe everyone's biomechanics are uniquely specialized.",
+      introDesc2: "By phasing out rigid static routines and paper sheets, TvarX guides you with adaptive weight targets, rest, and fatigue level checks. It functions like an elite coach, minimizing injury risks and pushing muscle fibers to peak output.",
       visionTitle: "Our Strategic Mission",
       visionDesc: "To democratize elite sports coaching via affordable, high-tech AI structures. We are dedicated to providing premier sports coaching without heavy cost barriers.",
-      featuresTitle: "Core Features of Tarx Smart Workouts",
+      featuresTitle: "Core Features of TvarX Smart Workouts",
       featuresList: [
         "Dynamic, long-term athletic workouts structured by local model reinforcement",
         "Deep computer vision tracking of skeletal postures during critical lifts like squats",
@@ -507,12 +524,22 @@ export const translations: Record<"fa" | "en", TranslationSchema> = {
         { title: "Scientific Rigour", desc: "All metrics are computed based on the latest physical conditioning and metabolic models." },
         { title: "Privacy Safeguards", desc: "Physical records are treated as medical secrets, encrypted end-to-end on devices." },
         { title: "Empowering UX Look", desc: "Sleek and eye-safe minimal dark layouts to keep your brain focused in intense spaces." }
-      ]
+      ],
+      namePhilosophy: {
+        title: "The Genesis and Meaning of TvarX",
+        p1: "The name 'TvarX' is derived from the ancient word 'Tvar'—a term symbolizing acceleration, taking the initial physical leap, and reaching peak potential. We chose this name because we believe there is a great latent capability inside everyone that only awakens once you start moving.",
+        p2: "This is where the vision of TvarX started: a platform that lowers the friction of starting. When you decide to invest in your physical health, your posture, and your overall vitality, you have an expert companion by your side. We guide you with clean, progressive workout plans to slowly discover abilities you never thought you had.",
+        tvarTitle: "Tvar (Movement)",
+        tvarDesc: "The ancient root for accelerating, stepping forward, and transitioning into a higher state of capability.",
+        xTitle: "X (Modernity)",
+        xDesc: "Representing our cutting-edge vision, marrying physical hypertrophy with artificial intelligence and precision engineering.",
+        p3: "TvarX is the synthesis: kickstarting your stride, amplifying your momentum, and utilizing next-gen technology to bring you closer to your strongest self."
+      }
     },
     privacyPage: {
       title: "Privacy Policy",
-      seoTitle: "Privacy Policy | Tarx App - Secure Health Data Protection",
-      seoDesc: "Read our official guidelines explaining how Tarx collects, manages, encrypts, and handles physical, tracking, and workout data.",
+      seoTitle: "Privacy Policy | TvarX App - Secure Health Data Protection",
+      seoDesc: "Read our official guidelines explaining how TvarX collects, manages, encrypts, and handles physical, tracking, and workout data.",
       lastUpdated: "Last Updated: June 2026",
       tocTitle: "Document Sections",
       sections: [
@@ -568,8 +595,8 @@ export const translations: Record<"fa" | "en", TranslationSchema> = {
     },
     termsPage: {
       title: "Terms of Service",
-      seoTitle: "Terms of Service & Health Disclaimer | Tarx App",
-      seoDesc: "Our legal terms of use, health waivers, subscription policies, and code boundaries for the Tarx mobile application.",
+      seoTitle: "Terms of Service & Health Disclaimer | TvarX App",
+      seoDesc: "Our legal terms of use, health waivers, subscription policies, and code boundaries for the TvarX mobile application.",
       lastUpdated: "Last Updated: June 2026",
       tocTitle: "Document Sections",
       sections: [
@@ -577,14 +604,14 @@ export const translations: Record<"fa" | "en", TranslationSchema> = {
           id: "accept",
           title: "1. Acceptance of Terms",
           content: [
-            "By setting up, running, or accessing Tarx Mobile applications, you indicate absolute compliance with these legal terms. If you disagree, do not use the service."
+            "By setting up, running, or accessing TvarX Mobile applications, you indicate absolute compliance with these legal terms. If you disagree, do not use the service."
           ]
         },
         {
           id: "disclaimer",
           title: "2. Health & Fitness Waiver (Critical)",
           content: [
-            "Tarx is not a licensed medical center. Our coaching suggestions are not medical advice.",
+            "TvarX is not a licensed medical center. Our coaching suggestions are not medical advice.",
             "Working out with heavy barbells involves serious physical risks. You must evaluate your cardiovascular and skeletal health with a medical expert beforehand.",
             "We are not liable for physical pain, injuries, hernia, back pain, or secondary conditions occurring during or after executing workouts."
           ]
@@ -602,14 +629,14 @@ export const translations: Record<"fa" | "en", TranslationSchema> = {
           title: "4. Permitted Actions",
           content: [
             "The app is licensed strictly for individual, non-commercial workout purposes.",
-            "Reverse-engineering, server scraping, or unauthorized parsing of Tarx 3D animation files is legally prosecuted."
+            "Reverse-engineering, server scraping, or unauthorized parsing of TvarX 3D animation files is legally prosecuted."
           ]
         },
         {
           id: "limit",
           title: "5. Limitation of Liability",
           content: [
-            "Tarx provides services on an 'as is' basis without warranties. There are no guarantees of specific bodybuilding prizes or weight goals."
+            "TvarX provides services on an 'as is' basis without warranties. There are no guarantees of specific bodybuilding prizes or weight goals."
           ]
         },
         {
@@ -622,9 +649,9 @@ export const translations: Record<"fa" | "en", TranslationSchema> = {
       ]
     },
     footer: {
-      description: "Tarx advanced luxury fitness ecosystems integrate smart machine vision with sports methodologies to maximize and guide your physical potentials.",
-      storeDownloadTitle: "Get Tarx on your portable device",
-      copyright: "All rights reserved by Tarx.",
+      description: "TvarX advanced luxury fitness ecosystems integrate smart machine vision with sports methodologies to maximize and guide your physical potentials.",
+      storeDownloadTitle: "Get TvarX on your portable device",
+      copyright: "All rights reserved by TvarX.",
       craftedWith: "Crafted with devotion for yesterday's visionaries and today's champions"
     }
   }
