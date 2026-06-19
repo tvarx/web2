@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Zap, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 // Import the high-fidelity generated images
 import tracking from "../assets/images/1.png";
@@ -51,7 +51,7 @@ export function PhoneMockup({ type }: PhoneMockupProps) {
   return (
     <div 
       id={`phone-mockup-${type}`}
-      className="relative mx-auto w-[280px] sm:w-[310px] h-[580px] sm:h-[630px] rounded-[48px] bg-zinc-950 p-2.5 border-4 border-zinc-800 shadow-2xl shadow-brand-purple/20 flex flex-col overflow-hidden text-right leading-relaxed select-none"
+      className="relative mx-auto w-[280px] sm:w-[350px] h-[580px] sm:h-[630px] rounded-[50px] bg-zinc-950 p-2.5 border-4 border-zinc-800 shadow-2xl shadow-brand-purple/20 flex flex-col overflow-hidden text-right leading-relaxed select-none"
     >
       {/* Decorative Outer Bezel Gloss */}
       <div className="absolute inset-0 rounded-[44px] border-2 border-white/5 pointer-events-none z-30" />
@@ -65,17 +65,7 @@ export function PhoneMockup({ type }: PhoneMockupProps) {
           <div className="w-1.5 h-1.5 rounded-full bg-zinc-900" />
         </div>
 
-        {/* Dynamic IOS Status Bar */}
-        <div className="absolute top-0 inset-x-0 h-10 pt-3 px-6 flex items-center justify-between text-[10px] text-zinc-400 font-mono z-30 pointer-events-none bg-gradient-to-b from-black/60 to-transparent">
-          <div>09:41</div>
-          <div className="flex items-center gap-1.5">
-            <Zap className="w-2.5 h-2.5 text-[#A855F7]" />
-            <div className="w-4 h-2 border border-zinc-600 rounded-sm p-0.5 flex items-center">
-              <div className="w-2.5 h-full bg-[#7C3AED] rounded-2xs" />
-            </div>
-            <span>5G</span>
-          </div>
-        </div>
+
 
         {/* Progressive Loading Skeleton */}
         <AnimatePresence mode="popLayout">

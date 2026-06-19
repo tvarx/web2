@@ -143,7 +143,7 @@ export function Hero() {
                 animate={{ opacity: 1, x: -110, rotate: -12, scale: 0.88 }}
                 transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
                 whileHover={{ scale: 0.94, zIndex: 30, transition: { duration: 0.3 } }}
-                className="absolute z-10 origin-bottom shadow-2xl filter brightness-90 hover:brightness-100 transition-all cursor-pointer"
+                className="absolute z-10 origin-bottom shadow-2xl filter brightness-90 hover:brightness-100 transition-all cursor-pointer p-8"
               >
                 <PhoneMockup type="workout" interactive={false} />
               </motion.div>
@@ -154,7 +154,7 @@ export function Hero() {
                 animate={{ opacity: 1, x: 110, rotate: 12, scale: 0.88 }}
                 transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
                 whileHover={{ scale: 0.94, zIndex: 30, transition: { duration: 0.3 } }}
-                className="absolute z-10 origin-bottom shadow-2xl filter brightness-90 hover:brightness-100 transition-all cursor-pointer"
+                className="absolute z-10 origin-bottom shadow-2xl filter brightness-90 hover:brightness-100 transition-all cursor-pointer p-8"
               >
                 <PhoneMockup type="mapboady" interactive={false} />
               </motion.div>
@@ -164,7 +164,7 @@ export function Hero() {
                 initial={{ opacity: 0, y: 50, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 0.9, delay: 0.3, ease: "easeOut" }}
-                className="absolute z-20 shadow-2xl hover:scale-103 transition-transform duration-500"
+                className="absolute z-20 shadow-2xl hover:scale-103 transition-transform duration-500 p-8"
               >
                 {/* Floating animation loop */}
                 <motion.div
