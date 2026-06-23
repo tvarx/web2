@@ -51,13 +51,13 @@ export function PhoneMockup({ type }: PhoneMockupProps) {
   return (
     <div 
       id={`phone-mockup-${type}`}
-      className="relative mx-auto w-[280px] sm:w-[350px] h-[580px] sm:h-[630px] rounded-[50px] bg-zinc-950 p-2.5 border-4 border-zinc-800 shadow-2xl shadow-brand-purple/20 flex flex-col overflow-hidden text-right leading-relaxed select-none"
+      className="relative mx-auto w-[240px] sm:w-[300px] md:w-[350px] h-[500px] sm:h-[560px] md:h-[630px] rounded-[40px] md:rounded-[50px] bg-zinc-950 p-2 border-4 border-zinc-800 shadow-2xl shadow-brand-purple/20 flex flex-col overflow-hidden text-right leading-relaxed select-none"
     >
       {/* Decorative Outer Bezel Gloss */}
-      <div className="absolute inset-0 rounded-[44px] border-2 border-white/5 pointer-events-none z-30" />
+      <div className="absolute inset-0 rounded-[34px] md:rounded-[44px] border-2 border-white/5 pointer-events-none z-30" />
 
       {/* Screen Container */}
-      <div className="relative w-full h-full rounded-[38px] bg-[#070709] border border-zinc-900 overflow-hidden flex flex-col text-xs text-zinc-300">
+      <div className="relative w-full h-full rounded-[28px] md:rounded-[38px] bg-[#070709] border border-zinc-900 overflow-hidden flex flex-col text-xs text-zinc-300">
         
         {/* Dynamic Island Notch */}
         <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-28 h-6 rounded-full bg-zinc-950 z-40 flex items-center justify-center border border-zinc-900/60 shadow-inner">

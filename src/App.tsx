@@ -23,7 +23,7 @@ function AppLayout() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#050505] text-zinc-100 flex flex-col font-sans antialiased relative selection:bg-[#7C3AED] selection:text-white">
+    <div className="min-h-screen bg-[#050505] text-zinc-100 flex flex-col font-sans antialiased relative selection:bg-[#7C3AED] selection:text-white overflow-x-hidden max-w-[100vw]">
       {/* Structural Glowing background accents */}
       <div className="absolute top-[10%] left-[5%] w-[450px] h-[450px] rounded-full bg-[#7C3AED]/3 blur-[120px] pointer-events-none -z-10 animate-pulse" />
       <div className="absolute top-[40%] right-[5%] w-[500px] h-[500px] rounded-full bg-[#A855F7]/3 blur-[150px] pointer-events-none -z-10" />

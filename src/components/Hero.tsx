@@ -129,42 +129,42 @@ export function Hero() {
           </div>
 
           {/* Left Column: Overlapping 3D Phone Mockups Stack */}
-          <div className="lg:col-span-5 h-[500px] sm:h-[600px] relative flex items-center justify-center pt-8 lg:pt-0">
+          <div className="lg:col-span-5 min-h-[450px] sm:min-h-[550px] relative flex items-center justify-center pt-8 lg:pt-0">
             
             {/* Main Ambient Purple Light Glow behind the phone stack */}
             <div className="absolute w-[250px] sm:w-[350px] h-[250px] sm:h-[350px] rounded-full bg-gradient-to-tr from-[#7C3AED] to-[#A855F7] opacity-25 blur-[90px] -z-10 animate-pulse" />
 
-            {/* Overlapping Phone Mockup Layout with scale controls */}
-            <div className="relative w-full max-w-[450px] h-[550px] flex items-center justify-center scale-80 sm:scale-95 md:scale-100">
+            {/* Overlapping Phone Mockup Layout */}
+            <div className="relative w-full max-w-[350px] sm:max-w-[450px] min-h-[450px] sm:min-h-[550px] flex items-center justify-center">
               
-              {/* Phone 1: Left Rotated (Workout Video Screen) */}
+              {/* Phone 1: Left Rotated (Workout Video Screen) - hidden on mobile */}
               <motion.div
                 initial={{ opacity: 0, x: -80, rotate: -15, scale: 0.85 }}
                 animate={{ opacity: 1, x: -110, rotate: -12, scale: 0.88 }}
                 transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
                 whileHover={{ scale: 0.94, zIndex: 30, transition: { duration: 0.3 } }}
-                className="absolute z-10 origin-bottom shadow-2xl filter brightness-90 hover:brightness-100 transition-all cursor-pointer p-8"
+                className="hidden md:block absolute z-10 origin-bottom shadow-2xl filter brightness-90 hover:brightness-100 transition-all cursor-pointer p-8"
               >
                 <PhoneMockup type="workout" interactive={false} />
               </motion.div>
 
-              {/* Phone 2: Right Rotated (Progress Charts Screen) */}
+              {/* Phone 2: Right Rotated (Progress Charts Screen) - hidden on mobile */}
               <motion.div
                 initial={{ opacity: 0, x: 80, rotate: 15, scale: 0.85 }}
                 animate={{ opacity: 1, x: 110, rotate: 12, scale: 0.88 }}
                 transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
                 whileHover={{ scale: 0.94, zIndex: 30, transition: { duration: 0.3 } }}
-                className="absolute z-10 origin-bottom shadow-2xl filter brightness-90 hover:brightness-100 transition-all cursor-pointer p-8"
+                className="hidden md:block absolute z-10 origin-bottom shadow-2xl filter brightness-90 hover:brightness-100 transition-all cursor-pointer p-8"
               >
                 <PhoneMockup type="mapboady" interactive={false} />
               </motion.div>
 
-              {/* Phone 3: Center Elevated (Live Log Tracking Screen) */}
+              {/* Phone 3: Center Elevated (Live Log Tracking Screen) - always visible */}
               <motion.div
                 initial={{ opacity: 0, y: 50, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 0.9, delay: 0.3, ease: "easeOut" }}
-                className="absolute z-20 shadow-2xl hover:scale-103 transition-transform duration-500 p-8"
+                className="relative z-20 shadow-2xl hover:scale-103 transition-transform duration-500"
               >
                 {/* Floating animation loop */}
                 <motion.div

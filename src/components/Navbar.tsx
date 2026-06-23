@@ -62,7 +62,8 @@ export function Navbar() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black/40 backdrop-blur-xl border-b border-white/10" id="navbar">
+    <>
+    <header className="fixed top-0 left-0 right-0 z-40 bg-black/40 backdrop-blur-xl border-b border-white/10" id="navbar">
       <nav 
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between" 
         aria-label={t.lang === "fa" ? "منوی اصلی ناوبری" : "Global navigation header"}
@@ -88,7 +89,7 @@ export function Navbar() {
         </div>
 
         {/* Center links - responsive desktop navigation */}
-        <div className="hidden lg:flex items-center gap-7">
+        <div className="hidden md:flex items-center gap-4 lg:gap-7">
           {menuItems.map((item, idx) => {
             if (item.type === "hash") {
               return (
@@ -168,47 +169,93 @@ export function Navbar() {
           </button>
         </div>
       </nav>
+    </header>
 
-      {/* Mobile Glass Drawer Component */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="md:hidden border-b border-white/10 bg-black/90 backdrop-blur-2xl overflow-hidden"
-          >
-            <div className="px-4 pt-2 pb-6 flex flex-col gap-3">
+    {/* Mobile Drawer Overlay */}
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.25 }}
+          onClick={() => setIsOpen(false)}
+          className="md:hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm"
+        />
+      )}
+    </AnimatePresence>
+
+    {/* Mobile Slide-in Drawer from right */}
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ x: "100%" }}
+          animate={{ x: 0 }}
+          exit={{ x: "100%" }}
+          transition={{ type: "spring", damping: 25, stiffness: 300 }}
+          className="md:hidden fixed top-0 right-0 z-50 h-full w-[280px] max-w-[85vw] bg-zinc-950/95 backdrop-blur-2xl border-l border-white/10 shadow-2xl overflow-y-auto"
+        >
+          <div className="flex flex-col h-full px-5 py-6">
+            
+            {/* Close button + brand */}
+            <div className="flex items-center justify-between mb-8">
+              <Link
+                to={`/${currentLang}`}
+                onClick={() => setIsOpen(false)}
+                className="flex items-center gap-2"
+              >
+                <TarxLogo size={32} />
+                <span className="text-lg font-bold text-white font-display">TvarX</span>
+              </Link>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white transition-colors"
+                aria-label="Close menu"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Navigation items */}
+            <div className="flex-1 space-y-1">
               {menuItems.map((item, idx) => {
                 if (item.type === "hash") {
                   return (
                     <button
                       key={idx}
                       onClick={() => handleScrollToSection(item.target)}
-                      className={`text-right w-full py-2.5 text-zinc-300 hover:text-[#A855F7] transition-colors border-b border-zinc-900/50 text-base ${isRtl ? "text-right" : "text-left"}`}
+                      className={`w-full px-4 py-3 text-zinc-300 hover:text-white hover:bg-white/5 rounded-xl transition-all text-base font-medium text-right ${
+                        isRtl ? "text-right" : "text-left"
+                      }`}
                     >
                       {item.text}
                     </button>
                   );
                 } else {
+                  const active = location.pathname === item.target;
                   return (
                     <Link
                       key={idx}
                       to={item.target}
                       onClick={() => setIsOpen(false)}
-                      className={`w-full py-2.5 text-zinc-300 hover:text-[#A855F7] transition-colors border-b border-zinc-900/50 text-base block ${isRtl ? "text-right" : "text-left"}`}
+                      className={`w-full px-4 py-3 rounded-xl transition-all text-base font-medium block ${
+                        active
+                          ? "text-[#A855F7] bg-[#7C3AED]/10"
+                          : "text-zinc-300 hover:text-white hover:bg-white/5"
+                      } ${isRtl ? "text-right" : "text-left"}`}
                     >
                       {item.text}
                     </Link>
                   );
                 }
               })}
-              
-              {/* Language toggle inside Mobile Sidebar menu */}
+            </div>
+
+            {/* Bottom actions */}
+            <div className="pt-4 border-t border-white/5 space-y-3">
               <button
                 onClick={handleLanguageToggle}
-                className={`w-full py-3 mt-1 text-zinc-400 hover:text-white text-sm font-semibold flex items-center gap-2 justify-center border border-white/5 rounded-xl bg-white/[0.01]`}
+                className="w-full py-3 px-4 text-zinc-400 hover:text-white text-sm font-semibold flex items-center gap-2 justify-center border border-white/5 rounded-xl bg-white/[0.01]"
               >
                 <Languages className="w-4 h-4 text-[#A855F7]" />
                 <span>{currentLang === "fa" ? "English Website" : "سایت فارسی"}</span>
@@ -220,16 +267,16 @@ export function Navbar() {
                   setIsOpen(false);
                   window.dispatchEvent(new CustomEvent("open-vip-modal"));
                 }}
-                className="w-full mt-2 py-3 rounded-xl bg-gradient-to-r from-[#7C3AED] to-[#A855F7] text-white font-bold text-center flex items-center justify-center gap-2"
+                className="w-full py-3 rounded-xl bg-gradient-to-r from-[#7C3AED] to-[#A855F7] text-white font-bold text-center flex items-center justify-center gap-2"
               >
                 <span>{t.navbar.cta}</span>
                 {isRtl ? <ArrowLeft className="w-4 h-4" /> : <ArrowRight className="w-4 h-4" />}
               </motion.button>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </header>
-  );
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+    </>);
 }
 export default Navbar;
