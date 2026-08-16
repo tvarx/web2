@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { SEO } from "../components/SEO";
 import { Hero } from "../components/Hero";
 import { FeatureGrid } from "../components/FeatureCard";
+import { SportsSection } from "../components/SportsSection";
 import { Showcase } from "../components/Showcase";
 import { Stats } from "../components/Stats";
 import { CTA } from "../components/CTA";
@@ -45,6 +46,7 @@ export function Home() {
       <Hero />
       <CTA />
       <FeatureGrid />
+      <SportsSection />
       <Showcase />
       <Stats />
     </>

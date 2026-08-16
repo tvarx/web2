@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X, ArrowLeft, ArrowRight, Languages } from "lucide-react";
+import { Menu, X, ArrowLeft, ArrowRight, Languages, ChevronDown, Dumbbell, Activity } from "lucide-react";
 import { TarxLogo } from "./TarxLogo";
 import { translations, TranslationSchema } from "../i18n/translations";
+import { detailHrefFromItem, headerGroups, getSportsMenu } from "../sports/menu";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [sportsOpen, setSportsOpen] = useState(false);
+  const [sportsMobileOpen, setSportsMobileOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -15,21 +18,33 @@ export function Navbar() {
   const t: TranslationSchema = translations[currentLang];
   const isRtl = t.dir === "rtl";
 
+  const sportsHref = currentLang === "fa" ? "/sports" : "/en/sports";
+  const groups = headerGroups();
+  const muscles = getSportsMenu().muscles;
+
   const handleLanguageToggle = () => {
     setIsOpen(false);
     const otherLang = currentLang === "fa" ? "en" : "fa";
-    
+
     // Determine the target route to preserve sub-page paths
     let targetPath = `/${otherLang}`;
-    
-    if (location.pathname.includes("/about")) {
+
+    if (location.pathname === "/sports" || location.pathname === "/en/sports") {
+      targetPath = otherLang === "en" ? "/en/sports" : "/sports";
+    } else if (location.pathname.includes("/sports/")) {
+      import("../sports/data").then(({ resolveDetailPath, detailHref }) => {
+        const resolved = resolveDetailPath(location.pathname);
+        navigate(resolved ? detailHref(resolved.detail, otherLang) : targetPath);
+      });
+      return;
+    } else if (location.pathname.includes("/about")) {
       targetPath = `/${otherLang}/about`;
     } else if (location.pathname.includes("/privacy")) {
       targetPath = `/${otherLang}/privacy`;
     } else if (location.pathname.includes("/terms")) {
       targetPath = `/${otherLang}/terms`;
     }
-    
+
     navigate(targetPath);
   };
 
@@ -55,6 +70,7 @@ export function Navbar() {
 
   const menuItems = [
     { text: t.navbar.home, type: "route", target: `/${currentLang}` },
+    { text: t.sports.navLabel, type: "route", target: currentLang === "fa" ? "/sports" : "/en/sports" },
     { text: t.navbar.features, type: "hash", target: "features" },
     { text: t.navbar.about, type: "route", target: `/${currentLang}/about` },
     { text: t.navbar.privacy, type: "route", target: `/${currentLang}/privacy` },
@@ -101,6 +117,108 @@ export function Navbar() {
                   {item.text}
                   <span className="absolute bottom-0 right-0 w-0 h-[2px] bg-[#A855F7] transition-all duration-300 group-hover:w-full" />
                 </button>
+              );
+            } else if (item.target === sportsHref) {
+              const active = location.pathname.startsWith("/sports");
+              return (
+                <div
+                  key={idx}
+                  className="relative"
+                  onMouseEnter={() => setSportsOpen(true)}
+                  onMouseLeave={() => setSportsOpen(false)}
+                >
+                  <Link
+                    to={item.target}
+                    onClick={() => setSportsOpen(false)}
+                    className={`text-sm font-medium relative py-1 transition-colors group flex items-center gap-1.5 ${
+                      active ? "text-[#A855F7]" : "text-zinc-400 hover:text-white"
+                    }`}
+                  >
+                    {item.text}
+                    <ChevronDown
+                      className={`w-3.5 h-3.5 transition-transform ${sportsOpen ? "rotate-180" : ""} ${
+                        active ? "text-[#A855F7]" : "text-zinc-500"
+                      }`}
+                    />
+                    <span className={`absolute bottom-0 right-0 h-[2px] bg-[#A855F7] transition-all duration-300 ${active ? "w-full" : "w-0 group-hover:w-full"}`} />
+                  </Link>
+
+                  {/* Mega menu with all categories + muscles */}
+                  <AnimatePresence>
+                    {sportsOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 8 }}
+                        transition={{ duration: 0.15 }}
+                        className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[min(92vw,760px)]"
+                      >
+                        <div className="rounded-2xl border border-white/10 bg-zinc-950/95 backdrop-blur-2xl shadow-2xl shadow-black/60 overflow-hidden">
+                          <div className="flex items-center justify-between px-5 py-3 border-b border-white/5">
+                            <span className="text-sm font-semibold text-white flex items-center gap-2">
+                              <Dumbbell className="w-4 h-4 text-[#A855F7]" />
+                              {t.sports.title}
+                            </span>
+                            <Link
+                              to={sportsHref}
+                              onClick={() => setSportsOpen(false)}
+                              className="text-xs text-[#A855F7] hover:underline flex items-center gap-1"
+                            >
+                              {t.lang === "fa" ? "همه تمرین‌ها" : "All exercises"}
+                              {isRtl ? <ArrowLeft className="w-3 h-3" /> : <ArrowRight className="w-3 h-3" />}
+                            </Link>
+                          </div>
+                          <div className="grid grid-cols-10 gap-4 p-5 max-h-[70vh] overflow-y-auto">
+                            {groups.map((g) => (
+                              <div key={g.id} className="col-span-3">
+                                <p className="text-[11px] font-bold uppercase tracking-wider text-zinc-500 mb-1.5" dir="auto">
+                                  {currentLang === "fa" ? g.title.fa : g.title.en}
+                                </p>
+                                <ul className="space-y-0.5">
+                                  {g.categories.map((c) => (
+                                    <li key={c.slug.en}>
+                                      <Link
+                                        to={detailHrefFromItem(c, currentLang)}
+                                        onClick={() => setSportsOpen(false)}
+                                        className="flex items-center justify-between gap-2 text-[13px] text-zinc-400 hover:text-white px-2 py-1 rounded-lg hover:bg-white/5 transition-colors"
+                                      >
+                                        <span className="truncate" dir="auto">
+                                          {c.name[currentLang]}
+                                        </span>
+                                        <span className="text-[10px] text-zinc-600 shrink-0">{c.exercise_count}</span>
+                                      </Link>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            ))}
+                            <div className="col-span-1">
+                              <p className="text-[11px] font-bold uppercase tracking-wider text-zinc-500 mb-1.5">
+                                {t.sports.filterMuscles}
+                              </p>
+                              <ul className="space-y-0.5">
+                                {muscles.map((m) => (
+                                  <li key={m.slug.en}>
+                                    <Link
+                                      to={detailHrefFromItem(m, currentLang)}
+                                      onClick={() => setSportsOpen(false)}
+                                      className="flex items-center justify-between gap-2 text-[13px] text-zinc-400 hover:text-white px-2 py-1 rounded-lg hover:bg-white/5 transition-colors"
+                                    >
+                                      <span className="truncate" dir="auto">
+                                        {m.name[currentLang]}
+                                      </span>
+                                      <span className="text-[10px] text-zinc-600 shrink-0">{m.exercise_count}</span>
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               );
             } else {
               const active = location.pathname === item.target;
@@ -233,6 +351,84 @@ export function Navbar() {
                   );
                 } else {
                   const active = location.pathname === item.target;
+                  if (item.target === sportsHref) {
+                    return (
+                      <div key={idx} className="rounded-xl">
+                        <button
+                          onClick={() => setSportsMobileOpen((v) => !v)}
+                          className={`w-full px-4 py-3 rounded-xl transition-all text-base font-medium flex items-center justify-between ${
+                            active
+                              ? "text-[#A855F7] bg-[#7C3AED]/10"
+                              : "text-zinc-300 hover:text-white hover:bg-white/5"
+                          }`}
+                          aria-expanded={sportsMobileOpen}
+                        >
+                          <span className="flex items-center gap-2">
+                            <Dumbbell className="w-4 h-4 text-[#A855F7]" />
+                            {item.text}
+                          </span>
+                          <ChevronDown className={`w-4 h-4 transition-transform ${sportsMobileOpen ? "rotate-180" : ""}`} />
+                        </button>
+                        <AnimatePresence initial={false}>
+                          {sportsMobileOpen && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.2 }}
+                              className="overflow-hidden"
+                            >
+                              <div className="pl-3 pr-2 pb-3 space-y-1">
+                                <Link
+                                  to={sportsHref}
+                                  onClick={() => setIsOpen(false)}
+                                  className="block px-4 py-2.5 rounded-lg text-sm font-medium text-[#A855F7] bg-[#7C3AED]/10"
+                                >
+                                  {t.lang === "fa" ? "همه تمرین‌ها (ویدیو + عکس)" : "All exercises (video + photos)"}
+                                </Link>
+                                {groups.map((g) => (
+                                  <div key={g.id} className="mt-2">
+                                    <p className="text-[11px] font-semibold text-zinc-500 px-3 py-1" dir="auto">
+                                      {currentLang === "fa" ? g.title.fa : g.title.en}
+                                    </p>
+                                    {g.categories.map((c) => (
+                                      <Link
+                                        key={c.slug.en}
+                                        to={detailHrefFromItem(c, currentLang)}
+                                        onClick={() => setIsOpen(false)}
+                                        className="flex items-center justify-between px-4 py-2 rounded-lg text-sm text-zinc-400 hover:text-white hover:bg-white/5"
+                                      >
+                                        <span className="truncate" dir="auto">
+                                          {c.name[currentLang]}
+                                        </span>
+                                        <span className="text-[10px] text-zinc-600 shrink-0">{c.exercise_count}</span>
+                                      </Link>
+                                    ))}
+                                  </div>
+                                ))}
+                                <p className="text-[11px] font-semibold text-zinc-500 px-3 py-1 mt-2">
+                                  {t.sports.filterMuscles}
+                                </p>
+                                {muscles.map((m) => (
+                                  <Link
+                                    key={m.slug.en}
+                                    to={detailHrefFromItem(m, currentLang)}
+                                    onClick={() => setIsOpen(false)}
+                                    className="flex items-center justify-between px-4 py-2 rounded-lg text-sm text-zinc-400 hover:text-white hover:bg-white/5"
+                                  >
+                                    <span className="truncate" dir="auto">
+                                      {m.name[currentLang]}
+                                    </span>
+                                    <span className="text-[10px] text-zinc-600 shrink-0">{m.exercise_count}</span>
+                                  </Link>
+                                ))}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    );
+                  }
                   return (
                     <Link
                       key={idx}

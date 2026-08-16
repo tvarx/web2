@@ -3,9 +3,9 @@ import { Link, useLocation } from "react-router-dom";
 import { motion } from "motion/react";
 import { Github, Twitter, Instagram, Mail, Heart } from "lucide-react";
 import { TarxLogo } from "./TarxLogo";
-import logo from "../assets/images/logo.png";
-import myket from "../assets/images/myket.png";
-import badgeNew from "../assets/images/badge-new.png";
+import logo from "../assets/images/logo.webp";
+import myket from "../assets/images/myket.webp";
+import badgeNew from "../assets/images/badge-new.webp";
 import { 
   translations, 
   TranslationSchema,
@@ -79,6 +79,11 @@ export function Footer() {
               <li>
                 <Link to={`/${currentLang}`} onClick={handleScrollTop} className="text-zinc-400 hover:text-white transition-colors">
                   {t.navbar.home}
+                </Link>
+              </li>
+              <li>
+                <Link to={currentLang === "fa" ? "/sports" : "/en/sports"} onClick={handleScrollTop} className="text-zinc-400 hover:text-white transition-colors">
+                  {t.sports.navLabel}
                 </Link>
               </li>
               <li>

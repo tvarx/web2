@@ -24,6 +24,65 @@ export interface TranslationSchema {
     languageToggle: string;
     otherLang: "fa" | "en";
   };
+  homeSports: {
+    badge: string;
+    title: string;
+    subtitle: string;
+    viewAll: string;
+    categoriesTitle: string;
+    exercisesTitle: string;
+    videosLabel: string;
+  };
+  sports: {
+    navLabel: string;
+    badge: string;
+    title: string;
+    subtitle: string;
+    groupsTitle: string;
+    musclesTitle: string;
+    musclesSubtitle: string;
+    exercises: string;
+    difficulty: string;
+    difficultyEasy: string;
+    difficultyMedium: string;
+    difficultyHard: string;
+    equipmentNeeded: string;
+    equipmentNotNeeded: string;
+    needsWarmup: string;
+    benefits: string;
+    limitations: string;
+    safetyTips: string;
+    faq: string;
+    relatedExercises: string;
+    tagsLabel: string;
+    anatomyTitle: string;
+    anatomyDesc: string;
+    anatomyFunction: string;
+    anatomyLocation: string;
+    anatomyOrigin: string;
+    anatomyInsertion: string;
+    anatomyBlood: string;
+    anatomyDaily: string;
+    anatomyAntagonist: string;
+    anatomySynergist: string;
+    breadcrumbHome: string;
+    breadcrumbSports: string;
+    seeAltLang: string;
+    backToList: string;
+    searchExercises: string;
+    filterCategories: string;
+    filterMuscles: string;
+    filterDifficulty: string;
+    allItems: string;
+    male: string;
+    female: string;
+    frontView: string;
+    sideView: string;
+    noResults: string;
+    close: string;
+    exercisesCount: string;
+    muscle: string;
+  };
   hero: {
     badge: string;
     titleFirst: string;
@@ -171,6 +230,65 @@ export const translations: Record<"fa" | "en", TranslationSchema> = {
       languageToggle: "English",
       otherLang: "en"
     },
+    homeSports: {
+      badge: "ورزش‌ها و تمرین‌ها",
+      title: "بانک حرکتی و راهنمای ورزش",
+      subtitle: "صدها تمرین تصویری و آموزش گام‌به‌گام — از تجهیزات بدنسازی و دسته‌بندی ورزش‌ها تا آناتومی عضلات، همه در یک راهنمای کامل.",
+      viewAll: "مشاهده همه ورزش‌ها",
+      categoriesTitle: "دسته‌بندی تجهیزات",
+      exercisesTitle: "تمرین‌های محبوب",
+      videosLabel: "ویدیو"
+    },
+    sports: {
+      navLabel: "ورزش‌ها",
+      badge: "راهنمای کامل تمرینات ورزشی",
+      title: "دنیای ورزش و عضلات",
+      subtitle: "راهنمای جامع و دوزبانه تجهیزات ورزشی و آناتومی عضلات — همراه با فواید، نکات ایمنی و تمرین‌های مرتبط با هر حرکت.",
+      groupsTitle: "دسته‌های تجهیزات ورزشی",
+      musclesTitle: "آناتومی عضلات",
+      musclesSubtitle: "با عملکرد، محل قرارگیری و تمرین‌های مؤثر هر عضله آشنا شوید.",
+      exercises: "تمرین",
+      difficulty: "سختی",
+      difficultyEasy: "ساده",
+      difficultyMedium: "متوسط",
+      difficultyHard: "پیشرفته",
+      equipmentNeeded: "نیازمند تجهیزات",
+      equipmentNotNeeded: "بدون تجهیزات",
+      needsWarmup: "نیازمند گرم‌کردن",
+      benefits: "فواید",
+      limitations: "محدودیت‌ها",
+      safetyTips: "نکات ایمنی",
+      faq: "سوالات متداول",
+      relatedExercises: "تمرین‌های مرتبط",
+      tagsLabel: "برچسب‌ها",
+      anatomyTitle: "اطلاعات آناتومیکی",
+      anatomyDesc: "توضیحات",
+      anatomyFunction: "عملکرد",
+      anatomyLocation: "محل قرارگیری",
+      anatomyOrigin: "مبدأ (Origin)",
+      anatomyInsertion: "اتصال (Insertion)",
+      anatomyBlood: "خون‌رسانی",
+      anatomyDaily: "کاربرد در زندگی روزمره",
+      anatomyAntagonist: "عضلات آنتاگونیست",
+      anatomySynergist: "عضلات هم‌کار",
+      breadcrumbHome: "خانه",
+      breadcrumbSports: "ورزش‌ها",
+      seeAltLang: "نسخه انگلیسی این صفحه",
+      backToList: "بازگشت به فهرست ورزش‌ها",
+      searchExercises: "جستجوی تمرین…",
+      filterCategories: "دسته‌بندی تجهیزات",
+      filterMuscles: "عضلات",
+      filterDifficulty: "سختی",
+      allItems: "همه",
+      male: "مرد",
+      female: "زن",
+      frontView: "نمای روبرو",
+      sideView: "نمای کناری",
+      noResults: "تمرینی مطابق فیلترها یافت نشد.",
+      close: "بستن",
+      exercisesCount: "تمرین",
+      muscle: "عضله"
+    },
     hero: {
       badge: "نسل جدید اپلیکیشن فیتنس فارسی با هوش مصنوعی",
       titleFirst: "برنامه تمرینی اختصاصی،",
@@ -238,9 +356,9 @@ export const translations: Record<"fa" | "en", TranslationSchema> = {
     cta: {
       badge: "دسترسی فوری به اشتراک طلایی",
       title: "نسخه قوی‌تر خودت رو بساز",
-      subtitle: "بدون نیاز به ثبت‌نام یا ایمیل، همین حالا اپلیکیشن TvarX را مستقیماً نصب کنید. تمام کاربران جدید از ۷ روز تست رایگان کامل بدون نیاز به کارت بانکی بهره‌مند می‌شوند.",
+      subtitle: "بدون نیاز به ثبت‌نام یا ایمیل، همین حالا اپلیکیشن TvarX را مستقیماً نصب کنید. تمام کاربران جدید از ۶ روز تست رایگان کامل بدون نیاز به کارت بانکی بهره‌مند می‌شوند.",
       placeholder: "",
-      button: "۷ روز تست رایگان",
+      button: "۶ روز تست رایگان",
       sending: "",
       successTitle: "",
       successDesc: "",
@@ -249,7 +367,7 @@ export const translations: Record<"fa" | "en", TranslationSchema> = {
       successQueue: "",
       successQueueVal: "",
       downloadsTitle: "دریافت و نصب مستقیم اپلیکیشن:",
-      trialBadge: "شامل ۷ روز تست رایگان واقعی برای تمامی برنامه‌ها و ابزارهای هوش مصنوعی اختصاصی"
+      trialBadge: "شامل ۶ روز تست رایگان واقعی برای تمامی برنامه‌ها و ابزارهای هوش مصنوعی اختصاصی"
     },
     aboutPage: {
       title: "درباره TvarX",
@@ -412,15 +530,74 @@ export const translations: Record<"fa" | "en", TranslationSchema> = {
       description: "Receive personalized workout plans dynamically adjusted by TvarX AI. Equipped with an AI workout coach, instant posture analysis, and advanced tracking charts.",
       keywords: "AI fitness app, bodybuilding workout plans, AI personal trainer, performance analytics, Persian fitness app, home workouts, sports artificial intelligence, TvarX"
     },
-    navbar: {
+navbar: {
       home: "Home",
       features: "Features",
       about: "About",
       privacy: "Privacy",
       terms: "Terms",
-      cta: "Get Started",
+      cta: "Start Now",
       languageToggle: "فارسی",
       otherLang: "fa"
+    },
+    homeSports: {
+      badge: "Sports & Exercises",
+      title: "Exercise Library & Sports Guide",
+      subtitle: "Hundreds of video-guided exercises and step-by-step training — from gym equipment categories and sports to muscle anatomy, all in one complete guide.",
+      viewAll: "View all sports",
+      categoriesTitle: "Equipment Categories",
+      exercisesTitle: "Popular Exercises",
+      videosLabel: "videos"
+    },
+    sports: {
+      navLabel: "Sports",
+      badge: "Complete Exercise Guide",
+      title: "Sports Equipment & Muscle Anatomy",
+      subtitle: "A comprehensive bilingual guide to workout equipment and muscle anatomy — with benefits, safety tips, and related exercises for every movement.",
+      groupsTitle: "Sports Equipment Categories",
+      musclesTitle: "Muscle Anatomy",
+      musclesSubtitle: "Discover the function, location, and most effective exercises for each muscle.",
+      exercises: "exercises",
+      difficulty: "Difficulty",
+      difficultyEasy: "Easy",
+      difficultyMedium: "Intermediate",
+      difficultyHard: "Advanced",
+      equipmentNeeded: "Equipment required",
+      equipmentNotNeeded: "No equipment",
+      needsWarmup: "Warm-up required",
+      benefits: "Benefits",
+      limitations: "Limitations",
+      safetyTips: "Safety Tips",
+      faq: "Frequently Asked Questions",
+      relatedExercises: "Related Exercises",
+      tagsLabel: "Tags",
+      anatomyTitle: "Anatomy Details",
+      anatomyDesc: "Description",
+      anatomyFunction: "Function",
+      anatomyLocation: "Location",
+      anatomyOrigin: "Origin",
+      anatomyInsertion: "Insertion",
+      anatomyBlood: "Blood Supply",
+      anatomyDaily: "Daily Life Usage",
+      anatomyAntagonist: "Antagonist Muscles",
+      anatomySynergist: "Synergist Muscles",
+      breadcrumbHome: "Home",
+      breadcrumbSports: "Sports",
+      seeAltLang: "View Persian version of this page",
+      backToList: "Back to sports list",
+      searchExercises: "Search exercises…",
+      filterCategories: "Equipment Categories",
+      filterMuscles: "Muscles",
+      filterDifficulty: "Difficulty",
+      allItems: "All",
+      male: "Male",
+      female: "Female",
+      frontView: "Front View",
+      sideView: "Side View",
+      noResults: "No exercises match the current filters.",
+      close: "Close",
+      exercisesCount: "exercises",
+      muscle: "muscle"
     },
     hero: {
       badge: "The Next Generation of AI-Powered Fitness & Workout Apps",
@@ -489,9 +666,9 @@ export const translations: Record<"fa" | "en", TranslationSchema> = {
     cta: {
       badge: "Instant Premium Access",
       title: "Forge Your Strongest Self",
-      subtitle: "No signups or email registrations required. Install the TvarX app directly now. Every new user instantly starts an all-access 7-day free trial with no credit card details required.",
+      subtitle: "No signups or email registrations required. Install the TvarX app directly now. Every new user instantly starts an all-access 6-day free trial with no credit card details required.",
       placeholder: "",
-      button: "7 Days Free Trial",
+      button: "6 Days Free Trial",
       sending: "",
       successTitle: "",
       successDesc: "",
@@ -500,7 +677,7 @@ export const translations: Record<"fa" | "en", TranslationSchema> = {
       successQueue: "",
       successQueueVal: "",
       downloadsTitle: "Download & Install Directly:",
-      trialBadge: "Includes 7 days of 100% free unlimited trial. No credit card required."
+      trialBadge: "Includes 6 days of 100% free unlimited trial. No credit card required."
     },
     aboutPage: {
       title: "About TvarX",

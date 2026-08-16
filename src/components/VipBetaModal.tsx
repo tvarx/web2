@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Sparkles, X, Download, ShieldCheck, Check } from "lucide-react";
-import badgeNew from "../assets/images/badge-new.png";
+import badgeNew from "../assets/images/badge-new.webp";
 import { 
   translations, 
   TranslationSchema,
@@ -35,12 +35,12 @@ export function VipBetaModal({ isOpen, onClose, lang }: VipBetaModalProps) {
     ? [
         "فعال‌سازی آنی تمام امکانات تیمی و هوش حرکتی",
         "فاقد هرگونه آگهی تبلیغاتی مزاحم یا پرداخت مکرر",
-        "تست رایگان بی‌قید‌و‌شرط برای مدت ۷ روز کامل"
+        "تست رایگان بی‌قید‌و‌شرط برای مدت ۶ روز کامل"
       ]
     : [
         "Instant access to all skeleton Tracking features",
         "Zero ad banners or prompt payments",
-        "100% unconditional 7-day all-access trial"
+        "100% unconditional 6-day all-access trial"
       ];
 
   return (

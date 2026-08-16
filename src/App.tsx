@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route, Navigate, Outlet, useLocation } from "react-router-dom";
 import { motion } from "motion/react";
 import { Navbar } from "./components/Navbar";
@@ -7,7 +7,21 @@ import { Home } from "./pages/Home";
 import { About } from "./pages/About";
 import { Privacy } from "./pages/Privacy";
 import { Terms } from "./pages/Terms";
+import { SportsHome } from "./sports/pages/SportsHome";
 import { VipBetaModal } from "./components/VipBetaModal";
+
+// Heavy sports pages are code-split: their rich data chunks only download
+// when the visitor actually opens a category/muscle/detail page.
+const SportsDetail = lazy(() => import("./sports/pages/SportsDetail"));
+const ExercisePage = lazy(() => import("./sports/pages/ExercisePage"));
+
+function SportsFallback() {
+  return (
+    <div className="pt-40 pb-40 flex items-center justify-center">
+      <div className="w-10 h-10 rounded-full border-2 border-[#A855F7]/30 border-t-[#A855F7] animate-spin" />
+    </div>
+  );
+}
 
 function AppLayout() {
   const [isVipOpen, setIsVipOpen] = useState(false);
@@ -34,10 +48,10 @@ function AppLayout() {
 
       {/* Dynamic route Outlet insertion */}
       <main className="flex-grow">
-        <Outlet />
+        <Suspense fallback={<SportsFallback />}>
+          <Outlet />
+        </Suspense>
       </main>
-
-
 
       {/* Shared Global VIP Beta Access/Downloads Modal */}
       <VipBetaModal isOpen={isVipOpen} onClose={() => setIsVipOpen(false)} lang={currentLang} />
@@ -48,33 +62,49 @@ function AppLayout() {
   );
 }
 
+export function AppRoutes() {
+  return (
+    <Routes>
+      {/* Absolute root path defaults to Persian /fa layout */}
+      <Route path="/" element={<Navigate to="/fa" replace />} />
+
+      {/* Setup layout router shell */}
+      <Route element={<AppLayout />}>
+        {/* Persian/RTL route targets */}
+        <Route path="/fa" element={<Home />} />
+        <Route path="/fa/about" element={<About />} />
+        <Route path="/fa/privacy" element={<Privacy />} />
+        <Route path="/fa/terms" element={<Terms />} />
+
+        {/* English/LTR route targets */}
+        <Route path="/en" element={<Home />} />
+        <Route path="/en/about" element={<About />} />
+        <Route path="/en/privacy" element={<Privacy />} />
+        <Route path="/en/terms" element={<Terms />} />
+
+        {/* Sports pages — bilingual */}
+        <Route path="/sports" element={<SportsHome />} />
+        <Route path="/en/sports" element={<SportsHome />} />
+        <Route path="/sports/exercises/:slug" element={<ExercisePage />} />
+        <Route path="/en/sports/exercises/:slug" element={<ExercisePage />} />
+        <Route path="/en/sports/:slug" element={<SportsDetail />} />
+        <Route path="/fa/sports/:slug" element={<SportsDetail />} />
+        <Route path="/sports/:slug" element={<SportsDetail />} />
+
+        {/* Fallback routing: unrecognized addresses redirect back to /fa default */}
+        <Route path="*" element={<Navigate to="/fa" replace />} />
+      </Route>
+    </Routes>
+  );
+}
+
 export function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        {/* Absolute root path defaults to Persian /fa layout */}
-        <Route path="/" element={<Navigate to="/fa" replace />} />
-
-        {/* Setup layout router shell */}
-        <Route element={<AppLayout />}>
-          {/* Persian/RTL route targets */}
-          <Route path="/fa" element={<Home />} />
-          <Route path="/fa/about" element={<About />} />
-          <Route path="/fa/privacy" element={<Privacy />} />
-          <Route path="/fa/terms" element={<Terms />} />
-
-          {/* English/LTR route targets */}
-          <Route path="/en" element={<Home />} />
-          <Route path="/en/about" element={<About />} />
-          <Route path="/en/privacy" element={<Privacy />} />
-          <Route path="/en/terms" element={<Terms />} />
-
-          {/* Fallback routing: unrecognized addresses redirect back to /fa default */}
-          <Route path="*" element={<Navigate to="/fa" replace />} />
-        </Route>
-      </Routes>
+      <AppRoutes />
     </BrowserRouter>
   );
 }
 
 export default App;
+

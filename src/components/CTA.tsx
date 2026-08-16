@@ -2,8 +2,8 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import { motion } from "motion/react";
 import { Sparkles, Download, ShieldCheck } from "lucide-react";
-import badgeNew from "../assets/images/badge-new.png";
-import myket from "../assets/images/myket.png";
+import badgeNew from "../assets/images/badge-new.webp";
+import myket from "../assets/images/myket.webp";
 
 import { 
   translations, 

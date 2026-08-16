@@ -3,11 +3,11 @@ import { motion, AnimatePresence } from "motion/react";
 import { Loader2 } from "lucide-react";
 
 // Import the high-fidelity generated images
-import tracking from "../assets/images/1.png";
-import workout from "../assets/images/2.png";
-import analytics from "../assets/images/4.png";
-import mapboady from "../assets/images/3.png";
-import workuser from "../assets/images/5.png";
+import tracking from "../assets/images/1.webp";
+import workout from "../assets/images/2.webp";
+import analytics from "../assets/images/4.webp";
+import mapboady from "../assets/images/3.webp";
+import workuser from "../assets/images/5.webp";
 
 interface PhoneMockupProps {
   type: "workout" | "tracking" | "analytics" |"mapboady" |"workuser";
