@@ -9,6 +9,7 @@ import { AppRoutes } from "../src/App";
 import { buildSeo, buildExerciseSeo, getExercisesIndex, getSportsData, listSeo, faPathSlug, exerciseBasePath } from "../src/sports/data";
 import { setExerciseDetails } from "../src/sports/details";
 import { SITE_BASE_URL } from "../src/sports/env";
+import { translations } from "../src/i18n/translations";
 import type { JsonLdItem, Lang } from "../src/sports/types";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -151,6 +152,36 @@ function exerciseHead(ex: ReturnType<typeof getExercisesIndex>[number], lang: La
   };
 }
 
+const STATIC_PAGES = ["home", "about", "privacy", "terms"] as const;
+type StaticPage = (typeof STATIC_PAGES)[number];
+
+function staticPageHead(page: StaticPage, lang: Lang): HeadInput {
+  const t = translations[lang];
+  const pagePath = page === "home" ? "" : `/${page}`;
+  const canonical = `${SITE_BASE_URL}/${lang}${pagePath}`;
+  const hreflang: HeadInput["hreflang"] = {
+    en: `${SITE_BASE_URL}/en${pagePath}`,
+    fa: `${SITE_BASE_URL}/fa${pagePath}`,
+    "x-default": `${SITE_BASE_URL}/fa${pagePath}`,
+  };
+  const common = {
+    canonical,
+    hreflang,
+    ogType: "website" as const,
+    ogUrl: canonical,
+  };
+  switch (page) {
+    case "home":
+      return { ...common, title: t.meta.title, description: t.meta.description, keywords: t.meta.keywords.split(", ") };
+    case "about":
+      return { ...common, title: t.aboutPage.seoTitle, description: t.aboutPage.seoDesc };
+    case "privacy":
+      return { ...common, title: t.privacyPage.seoTitle, description: t.privacyPage.seoDesc };
+    case "terms":
+      return { ...common, title: t.termsPage.seoTitle, description: t.termsPage.seoDesc };
+  }
+}
+
 function writeFile(rel: string, content: string) {
   const abs = path.join(DIST, rel);
   fs.mkdirSync(path.dirname(abs), { recursive: true });
@@ -182,6 +213,17 @@ async function main() {
   jobs.push({ pathname: "/sports", out: "sports/index.html", head: listHead("fa") });
   jobs.push({ pathname: "/en/sports", out: "en/sports/index.html", head: listHead("en") });
 
+  for (const lang of ["fa", "en"] as Lang[]) {
+    for (const page of STATIC_PAGES) {
+      const pagePath = page === "home" ? "" : `/${page}`;
+      jobs.push({
+        pathname: `/${lang}${pagePath}`,
+        out: `${lang}${pagePath === "" ? "/index.html" : `${pagePath}/index.html`}`,
+        head: staticPageHead(page, lang),
+      });
+    }
+  }
+
   for (const c of data.categories) {
     const detail = data.category_details[c.slug.en];
     for (const lang of ["fa", "en"] as Lang[]) {
@@ -211,7 +253,7 @@ async function main() {
       const slug = lang === "fa" ? ex.slug.fa || ex.slug.en : ex.slug.en;
       jobs.push({
         pathname: `${base}/${encodeURIComponent(slug)}`,
-        out: `${lang === "fa" ? "fa" : "en"}/sports/exercises/${slug.replace(/[/\\]/g, "-")}/index.html`,
+        out: `${lang === "fa" ? "sports" : "en/sports"}/exercises/${slug.replace(/[/\\]/g, "-")}/index.html`,
         head: exerciseHead(ex, lang),
       });
     }
@@ -270,21 +312,30 @@ Sitemap: ${SITE_BASE_URL}/sitemap.xml
 }
 
 function writeSitemap(data: ReturnType<typeof getSportsData>, lastmod: string) {
-  const entries: { loc: string; lastmod?: string; priority: string; changefreq: string; alternates: { hl: string; href: string }[] }[] = [];
-
-  entries.push({ loc: `${SITE_BASE_URL}/`, priority: "1.0", changefreq: "daily", alternates: [] });
-  for (const lang of ["fa", "en"] as Lang[]) {
-    entries.push({ loc: `${SITE_BASE_URL}/${lang}`, priority: "0.9", changefreq: "weekly", alternates: [] });
-    for (const page of ["about", "privacy", "terms"]) {
-      entries.push({ loc: `${SITE_BASE_URL}/${lang}/${page}`, priority: "0.6", changefreq: "monthly", alternates: [] });
-    }
-  }
-
   const mkAlternates = (lang: Lang, slugEn: string, slugFa: string) => [
     { hl: "en", href: `${SITE_BASE_URL}/en/sports/${encodeURIComponent(slugEn)}` },
     { hl: "fa", href: `${SITE_BASE_URL}/fa/sports/${encodeURIComponent(slugFa)}` },
     { hl: "x-default", href: `${SITE_BASE_URL}/en/sports/${encodeURIComponent(slugEn)}` },
   ];
+
+  const mkStaticAlternates = (page: string) => {
+    const pagePath = page === "" ? "" : `/${page}`;
+    return [
+      { hl: "en", href: `${SITE_BASE_URL}/en${pagePath}` },
+      { hl: "fa", href: `${SITE_BASE_URL}/fa${pagePath}` },
+      { hl: "x-default", href: `${SITE_BASE_URL}/fa${pagePath}` },
+    ];
+  };
+
+  const entries: { loc: string; lastmod?: string; priority: string; changefreq: string; alternates: { hl: string; href: string }[] }[] = [];
+
+  entries.push({ loc: `${SITE_BASE_URL}/`, priority: "1.0", changefreq: "daily", alternates: [] });
+  for (const lang of ["fa", "en"] as Lang[]) {
+    entries.push({ loc: `${SITE_BASE_URL}/${lang}`, priority: "0.9", changefreq: "weekly", alternates: mkStaticAlternates("") });
+    for (const page of ["about", "privacy", "terms"]) {
+      entries.push({ loc: `${SITE_BASE_URL}/${lang}/${page}`, priority: "0.6", changefreq: "monthly", alternates: mkStaticAlternates(page) });
+    }
+  }
 
   for (const lang of ["fa", "en"] as Lang[]) {
     const loc = lang === "fa" ? `${SITE_BASE_URL}/sports` : `${SITE_BASE_URL}/en/sports`;
