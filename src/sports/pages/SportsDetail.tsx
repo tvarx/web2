@@ -302,7 +302,7 @@ function ExerciseLibrary({ exercises, t, lang }: { exercises: RelatedExercise[];
                     alt={name}
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-300"
+                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-300 media-crop-bottom"
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#7C3AED]/20 via-zinc-900 to-zinc-950">
@@ -443,7 +443,7 @@ export function SportsDetail() {
                         alt={name}
                         fetchPriority="high"
                         decoding="async"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover media-crop-bottom"
                         onError={(e) => (e.currentTarget.style.display = "none")}
                       />
                     ) : (

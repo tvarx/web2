@@ -107,7 +107,7 @@ function ExerciseCard({
             fetchPriority={index < 6 ? "high" : "auto"}
             decoding="async"
             onError={() => setImgFailed(true)}
-            className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-300"
+            className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-300 media-crop-bottom"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#7C3AED]/20 via-zinc-900 to-zinc-950">

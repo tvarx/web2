@@ -60,7 +60,7 @@ function CategoryCard({ c, lang, t }: { c: CategoryListItem; lang: Lang; t: Tran
           loading="lazy"
           decoding="async"
           onError={() => setImgFailed(true)}
-          className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-90 group-hover:scale-105 transition-all duration-500"
+          className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-90 group-hover:scale-105 transition-all duration-500 media-crop-bottom"
         />
       ) : (
         <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#7C3AED]/20 via-zinc-900 to-zinc-950">
@@ -112,7 +112,7 @@ function MiniExerciseCard({
             loading="lazy"
             decoding="async"
             onError={() => setImgFailed(true)}
-            className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-300"
+            className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-300 media-crop-bottom"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#7C3AED]/20 via-zinc-900 to-zinc-950">

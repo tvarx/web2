@@ -15,6 +15,12 @@
   .purple-glow-orb {
     background: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, rgba(168, 85, 247, 0.05) 50%, rgba(5, 5, 5, 0) 100%);
   }
+
+  /* Crop the bottom band off exercise images/videos so the watermark
+     text at the bottom edge is never shown (tune with --crop-bottom). */
+  .media-crop-bottom {
+    clip-path: inset(0 0 var(--media-crop-bottom, 6%) 0);
+  }
 }
 
 /* Custom Scrollbar for modern feel */

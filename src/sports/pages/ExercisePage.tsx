@@ -123,7 +123,7 @@ function RelatedExerciseCard({ ex, t, lang }: RelatedCardProps) {
           alt={ex.name[lang]}
           loading="lazy"
           decoding="async"
-          className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-300"
+          className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-300 media-crop-bottom"
           onError={(e) => (e.currentTarget.style.display = "none")}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />

@@ -389,7 +389,7 @@ function Player({
         poster={view.image}
         preload="auto"
         playsInline
-        className="w-full aspect-video object-contain bg-black"
+        className="w-full aspect-video object-contain bg-black media-crop-bottom"
         onLoadStart={() => {
           setStatus("loading");
           setWaiting(false);
@@ -625,7 +625,7 @@ export function ExerciseVideoTabs({ name, media, lang, className = "" }: Props) 
               <img
                 src={active.image}
                 alt={name.en}
-                className="absolute inset-0 w-full h-full object-cover opacity-30"
+                className="absolute inset-0 w-full h-full object-cover opacity-30 media-crop-bottom"
               />
             ) : null}
             <div className="relative flex flex-col items-center gap-3 px-6 text-center">
@@ -657,7 +657,7 @@ export function ExerciseVideoTabs({ name, media, lang, className = "" }: Props) 
                   alt={`${name.en} ${view.gender} ${view.angle}`}
                   loading="lazy"
                   decoding="async"
-                  className="w-full aspect-video object-cover rounded-lg"
+                  className="w-full aspect-video object-cover rounded-lg media-crop-bottom"
                 />
               ) : (
                 <span className="w-full aspect-video rounded-lg bg-white/5 flex items-center justify-center">
