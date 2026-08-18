@@ -151,69 +151,93 @@ export function Navbar() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 8 }}
                         transition={{ duration: 0.15 }}
-                        className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[min(92vw,760px)]"
+                        className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[min(92vw,860px)]"
                       >
                         <div className="rounded-2xl border border-white/10 bg-zinc-950/95 backdrop-blur-2xl shadow-2xl shadow-black/60 overflow-hidden">
                           <div className="flex items-center justify-between px-5 py-3 border-b border-white/5">
-                            <span className="text-sm font-semibold text-white flex items-center gap-2">
-                              <Dumbbell className="w-4 h-4 text-[#A855F7]" />
+                            <span className="text-sm font-semibold text-white flex items-center gap-2.5">
+                              <span className="p-1.5 rounded-lg bg-[#7C3AED]/15 border border-[#A855F7]/30 text-[#A855F7]">
+                                <Dumbbell className="w-4 h-4" />
+                              </span>
                               {t.sports.title}
                             </span>
-                            <Link
-                              to={sportsHref}
-                              onClick={() => setSportsOpen(false)}
-                              className="text-xs text-[#A855F7] hover:underline flex items-center gap-1"
-                            >
-                              {t.lang === "fa" ? "همه تمرین‌ها" : "All exercises"}
-                              {isRtl ? <ArrowLeft className="w-3 h-3" /> : <ArrowRight className="w-3 h-3" />}
-                            </Link>
+                            <span className="text-[11px] text-zinc-500" dir="auto">
+                              {currentLang === "fa"
+                                ? `${groups.reduce((n, g) => n + g.categories.length, 0)} دسته · ${muscles.length} عضله`
+                                : `${groups.reduce((n, g) => n + g.categories.length, 0)} categories · ${muscles.length} muscles`}
+                            </span>
                           </div>
-                          <div className="grid grid-cols-10 gap-4 p-5 max-h-[70vh] overflow-y-auto">
-                            {groups.map((g) => (
-                              <div key={g.id} className="col-span-3">
-                                <p className="text-[11px] font-bold uppercase tracking-wider text-zinc-500 mb-1.5" dir="auto">
-                                  {currentLang === "fa" ? g.title.fa : g.title.en}
-                                </p>
-                                <ul className="space-y-0.5">
-                                  {g.categories.map((c) => (
-                                    <li key={c.slug.en}>
-                                      <Link
-                                        to={detailHrefFromItem(c, currentLang)}
-                                        onClick={() => setSportsOpen(false)}
-                                        className="flex items-center justify-between gap-2 text-[13px] text-zinc-400 hover:text-white px-2 py-1 rounded-lg hover:bg-white/5 transition-colors"
-                                      >
-                                        <span className="truncate" dir="auto">
-                                          {c.name[currentLang]}
-                                        </span>
-                                        <span className="text-[10px] text-zinc-600 shrink-0">{c.exercise_count}</span>
-                                      </Link>
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-                            ))}
-                            <div className="col-span-1">
-                              <p className="text-[11px] font-bold uppercase tracking-wider text-zinc-500 mb-1.5">
+
+                          <div className="flex max-h-[70vh] overflow-y-auto">
+                            {/* Category groups */}
+                            <div className="flex-1 min-w-0 grid grid-cols-3 gap-x-5 gap-y-4 p-5">
+                              {groups.map((g) => {
+                                const wide = g.categories.length > 5;
+                                return (
+                                  <div key={g.id} className={wide ? "col-span-3" : "col-span-1"}>
+                                    <p
+                                      className="text-[11px] font-bold uppercase tracking-wider text-zinc-500 mb-2 flex items-center gap-2"
+                                      dir="auto"
+                                    >
+                                      <span className="w-1 h-1 rounded-full bg-[#A855F7]" />
+                                      {currentLang === "fa" ? g.title.fa : g.title.en}
+                                    </p>
+                                    <ul className={`space-y-0.5 ${wide ? "grid grid-cols-2 gap-x-5" : ""}`}>
+                                      {g.categories.map((c) => (
+                                        <li key={c.slug.en}>
+                                          <Link
+                                            to={detailHrefFromItem(c, currentLang)}
+                                            onClick={() => setSportsOpen(false)}
+                                            className="group flex items-center justify-between gap-3 text-[13px] text-zinc-400 hover:text-white px-2 py-1 rounded-lg hover:bg-white/5 transition-colors"
+                                          >
+                                            <span className="truncate" dir="auto">
+                                              {c.name[currentLang]}
+                                            </span>
+                                            <span className="shrink-0 rounded-md bg-white/5 px-1.5 py-px text-[10px] tabular-nums text-zinc-500 group-hover:bg-[#7C3AED]/20 group-hover:text-[#A855F7] transition-colors">
+                                              {c.exercise_count}
+                                            </span>
+                                          </Link>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                );
+                              })}
+                            </div>
+
+                            {/* Muscles sidebar */}
+                            <div className="w-64 shrink-0 border-e border-white/5 bg-white/[0.02] p-5">
+                              <p className="text-[11px] font-bold uppercase tracking-wider text-zinc-500 mb-2 flex items-center gap-2">
+                                <Activity className="w-3 h-3 text-[#A855F7]" />
                                 {t.sports.filterMuscles}
                               </p>
-                              <ul className="space-y-0.5">
+                              <ul className="grid grid-cols-2 gap-x-2 gap-y-0.5">
                                 {muscles.map((m) => (
                                   <li key={m.slug.en}>
                                     <Link
                                       to={detailHrefFromItem(m, currentLang)}
                                       onClick={() => setSportsOpen(false)}
+                                      title={m.name[currentLang]}
                                       className="flex items-center justify-between gap-2 text-[13px] text-zinc-400 hover:text-white px-2 py-1 rounded-lg hover:bg-white/5 transition-colors"
                                     >
                                       <span className="truncate" dir="auto">
                                         {m.name[currentLang]}
                                       </span>
-                                      <span className="text-[10px] text-zinc-600 shrink-0">{m.exercise_count}</span>
                                     </Link>
                                   </li>
                                 ))}
                               </ul>
                             </div>
                           </div>
+
+                          <Link
+                            to={sportsHref}
+                            onClick={() => setSportsOpen(false)}
+                            className="flex items-center justify-center gap-2 py-3 text-xs font-semibold text-[#A855F7] hover:bg-[#7C3AED]/10 transition-colors border-t border-white/5"
+                          >
+                            {t.lang === "fa" ? "مرور همه تمرین‌ها" : "Browse all exercises"}
+                            {isRtl ? <ArrowLeft className="w-3.5 h-3.5" /> : <ArrowRight className="w-3.5 h-3.5" />}
+                          </Link>
                         </div>
                       </motion.div>
                     )}

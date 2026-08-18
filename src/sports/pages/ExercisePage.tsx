@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { motion } from "motion/react";
 import {
@@ -26,8 +26,8 @@ import {
 } from "../data";
 import { getSportsMenu } from "../menu";
 import { useExerciseDetails } from "../details";
-import { SITE_BASE_URL } from "../env";
-import type { Lang, IndexedExercise } from "../types";
+import { SITE_BASE_URL, SPORTS_API_BASE } from "../env";
+import type { ExerciseMedia, Lang, IndexedExercise } from "../types";
 import { translations, TranslationSchema } from "../../i18n/translations";
 import { ExerciseVideoTabs, buildVideoViews, posterFor } from "../ExerciseVideoTabs";
 import { CTA } from "../../components/CTA";
@@ -159,6 +159,39 @@ export function ExercisePage() {
   const isRtl = t.dir === "rtl";
   const ex = slug ? exerciseBySlug(slug) : null;
   const details = useExerciseDetails(ex?.id ?? "");
+  const [remoteMedia, setRemoteMedia] = useState<ExerciseMedia | null>(null);
+
+  // The catalogue is prerendered at build time and the API refuses browser
+  // CORS requests, so the shipped media is the source of truth. Only when the
+  // prerendered record ships without any media at all, try a direct API fetch
+  // as a last resort (it may still fail cross-origin, keeping the fallback).
+  useEffect(() => {
+    if (!ex?.id) {
+      setRemoteMedia(null);
+      return;
+    }
+    if (ex.media && Object.keys(ex.media).length > 0) {
+      setRemoteMedia(null);
+      return;
+    }
+
+    const controller = new AbortController();
+    fetch(`${SPORTS_API_BASE}/sports/exercises/${encodeURIComponent(ex.id)}`, {
+      signal: controller.signal,
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error(`Exercise media request failed: ${response.status}`);
+        return response.json() as Promise<{ media?: ExerciseMedia | null }>;
+      })
+      .then((payload) => {
+        if (payload.media) setRemoteMedia(payload.media);
+      })
+      .catch(() => {
+        // Keep the prerendered media as a graceful offline fallback.
+      });
+
+    return () => controller.abort();
+  }, [ex?.id]);
 
   if (!ex) {
     return (
@@ -173,8 +206,9 @@ export function ExercisePage() {
 
   const seo = buildExerciseSeo(ex, lang);
   const name = lang === "fa" ? ex.name.fa || ex.name.en : ex.name.en;
-  const views = buildVideoViews(ex.media);
-  const poster = posterFor(ex.media, "male") || ex.poster || exerciseFallbackImage(ex);
+  const media = remoteMedia ?? ex.media;
+  const views = buildVideoViews(media);
+  const poster = posterFor(media, "male") || ex.poster || exerciseFallbackImage(ex);
   const menu = getSportsMenu();
   const catItems = ex.categories
     .map((c) => menu.categories.find((x) => x.slug.en === c.en))
@@ -303,7 +337,7 @@ export function ExercisePage() {
                 <span className="w-1 h-6 rounded-full bg-gradient-to-b from-[#7C3AED] to-[#A855F7]" />
                 <h2 className="text-lg font-bold text-white font-display">{t.lang === "fa" ? "راهنمای ویدیویی" : "Video Guide"}</h2>
               </div>
-              <ExerciseVideoTabs name={ex.name} media={ex.media} lang={lang} />
+              <ExerciseVideoTabs name={ex.name} media={media} lang={lang} />
             </div>
 
             {/* Aside: details */}

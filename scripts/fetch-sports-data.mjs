@@ -55,23 +55,43 @@ export default ${json(obj)};
  *   { "<content_id>": { male: {...}, female: {...} } }
  * unwrap that single entry when present.
  */
-function normalizeMedia(m) {
+const MEDIA_VIEWS = [
+  ["male", "front"],
+  ["male", "side"],
+  ["female", "front"],
+  ["female", "side"],
+];
+
+/**
+ * Normalize the CDN video path after the media migration. Older list payloads
+ * use a slug-based path that returns 404, while the exercise endpoint exposes
+ * the working content-id based path.
+ */
+function normalizeMedia(m, contentId) {
   if (!m || typeof m !== "object") return null;
   const keys = Object.keys(m);
-  if (
+  const media =
     keys.length === 1 &&
     /^[0-9a-f]{24}$/i.test(keys[0]) &&
     m[keys[0]] &&
     typeof m[keys[0]] === "object" &&
     (m[keys[0]].male || m[keys[0]].female)
-  ) {
-    return m[keys[0]];
+      ? m[keys[0]]
+      : m;
+
+  if (contentId) {
+    for (const [gender, angle] of MEDIA_VIEWS) {
+      const video = media[gender]?.[angle]?.video;
+      if (typeof video === "string" && video.includes("c689729.parspack.net/exercise_videos-unbranded/") /* legacy CDN path */) {
+        media[gender][angle].video = `https://c689729.parspack.net/c689729/exercise_videos-unbranded/exercise_${contentId}_${gender}_${angle}.mp4`;
+      }
+    }
   }
-  return m;
+  return media;
 }
 
 function bestMedia(ex) {
-  const m = normalizeMedia(ex?.media);
+  const m = normalizeMedia(ex?.media, ex?.content_id);
   const pick = (g, a) => m?.[g]?.[a]?.image;
   return pick("male", "front") || pick("male", "side") || pick("female", "front") || pick("female", "side") || "";
 }
@@ -101,7 +121,7 @@ function recordFromListItem(ex) {
     equipment_needed: ex.equipment_needed ?? null,
     description: pickDesc(ex),
     correct_steps: pickSteps(ex),
-    media: normalizeMedia(ex.media ?? null) ?? null,
+    media: normalizeMedia(ex.media ?? null, ex.content_id) ?? null,
     extra: ex.extra ?? null,
     poster: bestMedia(ex),
     categories: [],
@@ -116,21 +136,16 @@ function mergeInto(rec, payload) {
   if (!rec.equipment_needed && payload.equipment_needed != null) rec.equipment_needed = payload.equipment_needed;
   if (!rec.description) rec.description = pickDesc(payload);
   if (!rec.correct_steps) rec.correct_steps = pickSteps(payload);
-  const media = normalizeMedia(payload.media);
-  if (media && Object.keys(media).length > 0 && (!rec.media || Object.keys(rec.media).length === 0)) {
+  const media = normalizeMedia(payload.media, payload.content_id ?? rec.content_id);
+  if (media && Object.keys(media).length > 0) {
+    // Prefer the detail endpoint: it contains the current CDN paths even when
+    // the list/category payload still has legacy URLs.
     rec.media = media;
   }
   if (!rec.poster) rec.poster = bestMedia(rec);
   if (payload.extra && Object.keys(payload.extra).length > 0 && !rec.extra) rec.extra = payload.extra;
   return rec;
 }
-
-const MEDIA_VIEWS = [
-  ["male", "front"],
-  ["male", "side"],
-  ["female", "front"],
-  ["female", "side"],
-];
 
 async function headStatus(url, timeoutMs = 20000) {
   const ctrl = new AbortController();
@@ -215,17 +230,53 @@ export async function dropMissingVideos(records, { concurrency = 16 } = {}) {
   });
   await Promise.all(workers);
 
+  /**
+   * CDN files are named exercise_{content_id}_{gender}_{angle}.mp4, but stale
+   * payloads may still reference the old named path |{content_id}_{gender}-
+   * {slug}-{angle}.mp4|. For any missing URL matching that legacy pattern, try
+   * the canonical path on the same CDN before giving up.
+   */
+  const canonicalVariant = (url) => {
+    const m = /exercise_videos-unbranded\/([0-9a-f]{24})_(male|female)-.+(front|side)\.mp4$/.exec(url);
+    return m
+      ? `https://c689729.parspack.net/c689729/exercise_videos-unbranded/exercise_${m[1]}_${m[2]}_${m[3]}.mp4`
+      : null;
+  };
+
   let removed = 0;
+  let restored = 0;
   for (const url of missing) {
-    for (const { rec, gender, angle } of urlToRefs.get(url) ?? []) {
-      const view = rec.media?.[gender]?.[angle];
-      if (view?.video === url) {
-        delete view.video;
-        removed++;
+    const refs = urlToRefs.get(url) ?? [];
+    const canonical = canonicalVariant(url);
+    let replaced = false;
+    if (canonical && !urlToRefs.has(canonical) && !isMissingStatus(await headStatus(canonical))) {
+      for (const { rec, gender, angle } of refs) {
+        const view = rec.media?.[gender]?.[angle];
+        if (view?.video === url) {
+          view.video = canonical;
+          replaced = true;
+        }
+      }
+      if (replaced) restored++;
+    }
+    if (!replaced) {
+      for (const { rec, gender, angle } of refs) {
+        const view = rec.media?.[gender]?.[angle];
+        if (view?.video === url) {
+          delete view.video;
+          removed++;
+        }
       }
     }
   }
-  return { total: unique.length, unique: unique.length, missing: missing.size, kept: unique.length - missing.size, removed };
+  return {
+    total: unique.length,
+    unique: unique.length,
+    missing: missing.size,
+    restored,
+    kept: unique.length - missing.size + restored,
+    removed,
+  };
 }
 
 async function main() {
