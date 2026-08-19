@@ -224,6 +224,12 @@ async function main() {
     }
   }
 
+  // The bare domain serves this file. Without this it stays the empty SPA
+  // shell that only client-side redirects to /fa, which Google can't reliably
+  // follow (shows up as "Redirect error"). Prerender the fa home here too and
+  // canonicalize to /fa, matching the in-app <Navigate to="/fa">.
+  jobs.push({ pathname: "/fa", out: "index.html", head: staticPageHead("home", "fa") });
+
   for (const c of data.categories) {
     const detail = data.category_details[c.slug.en];
     for (const lang of ["fa", "en"] as Lang[]) {
@@ -269,30 +275,46 @@ async function main() {
     rendered++;
   }
 
-  // Legacy fa URLs: previously the fa site used English slugs
-  // (/sports/exercises/barbell-curl). Write slim canonical redirects so old
-  // bookmarks and links still work and signal the new Persian URL to Google.
-  let legacy = 0;
-  for (const ex of getExercisesIndex()) {
-    const slugFa = ex.slug.fa || ex.slug.en;
-    const target = `${SITE_BASE_URL}/sports/exercises/${encodeURIComponent(slugFa)}`;
-    const out = `fa/sports/exercises/${ex.slug.en.replace(/[/\\]/g, "-")}/index.html`;
+  // Legacy URLs: the fa exercise pages lived at different addresses over time
+  // and only the newest one is prerendered. GitHub Pages can't do server-side
+  // 301s, so write slim meta-refresh redirects for every other spelling that
+  // Google or old links might still hit, pointing at the current Persian URL:
+  //   v3 (current) /sports/exercises/{fa-slug}
+  //   v2 (older)   /fa/sports/exercises/{fa-slug}
+  //   v1 (oldest)  /sports/exercises/{en-slug} and /fa/sports/exercises/{en-slug}
+  const redirectPage = (out: string, target: string, title: string) => {
     const html = `<!doctype html>
 <html lang="fa">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="refresh" content="0; url=${target}">
-<link rel="canonical" href="${target}">
-<title>${escapeHtml(ex.name.fa || ex.name.en)} | TvarX</title>
+<meta http-equiv="refresh" content="0; url=${esc(target)}">
+<link rel="canonical" href="${esc(target)}">
+<title>${escapeHtml(title)} | TvarX</title>
 </head>
 <body>
-<p>This page has moved: <a href="${target}">${target}</a></p>
+<p>This page has moved: <a href="${esc(target)}">${esc(target)}</a></p>
 <script>location.replace(${JSON.stringify(target)});</script>
 </body>
 </html>
 `;
     writeFile(out, html);
-    legacy++;
+  };
+  let legacy = 0;
+  const legacyRedirects = new Set<string>();
+  for (const ex of getExercisesIndex()) {
+    const slugEn = ex.slug.en.replace(/[/\\]/g, "-");
+    const slugFa = (ex.slug.fa || ex.slug.en).replace(/[/\\]/g, "-");
+    const title = ex.name.fa || ex.name.en;
+    const target = `${SITE_BASE_URL}/sports/exercises/${encodeURIComponent(slugFa)}`;
+    for (const out of [
+      `fa/sports/exercises/${slugEn}/index.html`,
+      ...(slugEn !== slugFa ? [`fa/sports/exercises/${slugFa}/index.html`, `sports/exercises/${slugEn}/index.html`] : []),
+    ]) {
+      if (legacyRedirects.has(out) || fs.existsSync(path.join(DIST, out))) continue;
+      legacyRedirects.add(out);
+      redirectPage(out, target, title);
+      legacy++;
+    }
   }
 
   writeSitemap(data, lastmod);
