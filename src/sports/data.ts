@@ -338,7 +338,7 @@ export function buildExerciseSeo(ex: IndexedExercise, lang: Lang): SportsSeo {
       description: enDescription,
       thumbnailUrl: poster || `${SITE_BASE_URL}/logo.png`,
       contentUrl: firstVideo,
-      uploadDate: (d.fetched_at || "").slice(0, 10),
+      uploadDate: (d.fetched_at || "").slice(0, 10) + "T00:00:00Z",
       inLanguage: lang === "fa" ? "fa" : "en",
       publisher: { "@type": "Organization", name: "TvarX" },
     });

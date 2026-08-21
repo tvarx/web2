@@ -287,6 +287,7 @@ async function main() {
 <html lang="fa">
 <head>
 <meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
 <meta http-equiv="refresh" content="0; url=${esc(target)}">
 <link rel="canonical" href="${esc(target)}">
 <title>${escapeHtml(title)} | TvarX</title>
@@ -319,8 +320,9 @@ async function main() {
 
   writeSitemap(data, lastmod);
   writeRobots();
+  write404();
 
-  console.log(`Prerendered ${rendered} sports pages + ${legacy} legacy redirects into ${DIST} (+ sitemap.xml, robots.txt)`);
+  console.log(`Prerendered ${rendered} sports pages + ${legacy} legacy redirects into ${DIST} (+ sitemap.xml, robots.txt, 404.html)`);
   console.log(`SITE_BASE_URL = ${SITE_BASE_URL}`);
 }
 
@@ -331,6 +333,26 @@ Allow: /
 Sitemap: ${SITE_BASE_URL}/sitemap.xml
 `;
   writeFile("robots.txt", robots);
+}
+
+function write404() {
+  const target = `${SITE_BASE_URL}/fa`;
+  const html = `<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="refresh" content="0; url=${esc(target)}">
+<link rel="canonical" href="${esc(target)}">
+<title>صفحه یافت نشد | TvarX</title>
+</head>
+<body>
+<p>This page has moved: <a href="${esc(target)}">${esc(target)}</a></p>
+<script>location.replace(${JSON.stringify(target)});</script>
+</body>
+</html>
+`;
+  writeFile("404.html", html);
 }
 
 function writeSitemap(data: ReturnType<typeof getSportsData>, lastmod: string) {
